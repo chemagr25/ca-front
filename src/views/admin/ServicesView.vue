@@ -20,15 +20,15 @@ export default {
     const setServices = async () => {
       const services = await getAllServices();
       allServices.value = services.data.content;
-     
-      
+
+
     };
 
 
     setServices()
 
-   
-    return {allServices};
+
+    return { allServices };
   },
 };
 </script>
@@ -38,8 +38,8 @@ export default {
 <template >
   <div class="main ">
 
-
-<TableServices :items="allServices"/>
+    <Loader v-if="!allServices" />
+    <TableServices v-else :items="allServices" />
 
 
 

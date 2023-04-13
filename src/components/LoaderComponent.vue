@@ -1,6 +1,6 @@
 <template>
-    <div class="  z-10 mt-48">
-      <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+  <div class="cont flex justify-center  mt-28">
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
 	<div class="wheel"></div>
 	<div class="hamster">
 		<div class="hamster__body">
@@ -18,12 +18,12 @@
 	</div>
 	<div class="spoke"></div>
 </div>
-    </div>
+  </div>
+
 </template>
 
 
-<style scoped>
-
+<style>
 .wheel-and-hamster {
   --dur: 1s;
   position: relative;
@@ -295,5 +295,4 @@
   to {
     transform: rotate(-1turn);
   }
-}
-</style>
+}</style>
