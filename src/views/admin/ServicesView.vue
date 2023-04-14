@@ -17,10 +17,19 @@ export default {
   setup() {
     const allServices = ref(null);
 
-    const setServices = async () => {
-      const services = await getAllServices();
-      allServices.value = services.data.content;
 
+    const setServices = async () => {
+
+      try {
+        const services = await getAllServices();
+        allServices.value = services.data.content;
+
+
+      }catch (e){
+        localStorage.clear()
+        window.location.reload()
+      }
+     
 
     };
 

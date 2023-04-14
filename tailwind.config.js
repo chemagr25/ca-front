@@ -15,7 +15,7 @@ module.exports = {
     styled: true,
     themes: false,
     base: false,
-    utils: false,
+    utils: true,
     logs: false,
     rtl: false,
     prefix: "",

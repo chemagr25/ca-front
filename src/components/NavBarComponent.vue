@@ -279,7 +279,5 @@ const mobileMenuOpen = ref(false);
 </template>
 
 <style scoped>
-header {
-  z-index: 99999 !important;
-}
+
 </style>

@@ -63,7 +63,7 @@ const routes = [
 
       },
       {
-        path: 'dashboard/servicios/:id',
+        path: 'servicios/:id',
         beforeEnter: [isAdminGuard],
         name: 'services-details',
 
