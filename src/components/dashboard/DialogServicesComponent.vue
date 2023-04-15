@@ -11,11 +11,11 @@
 
             </template>
             <v-row>
-                <v-dialog class=" mb-5 p-5" v-model="dialog" width="1024">
+                <v-dialog class="  mb-5 p-5" v-model="dialog" width="1024">
 
                     <v-card class="overflow-y-auto" height="600">
                         <v-card-text>
-                            <FormService />
+                            <FormService  @new-data="newData" @close="dialog = false"/>
                         </v-card-text>
                     </v-card>
                 </v-dialog>
@@ -49,11 +49,20 @@ export default {
         DocumentPlusIcon,
         FormService
     },
-    setup() {
+    emits: ['reloadTable'],
+    setup(_,ctx) {
         const firstName = ref(null)
         const lastName = ref(null)
         const dialog = ref(false)
         const tab = ref(null)
+
+        const newData= () => {
+            ctx.emit('reloadTable')
+            dialog.value= false
+        }
+
+
+     
 
         const firstNameRules = ref([
             value => {
@@ -70,7 +79,7 @@ export default {
             },
         ])
 
-        return { tab, dialog, firstName, lastName, firstNameRules, lastNameRules }
+        return { newData,tab, dialog, firstName, lastName, firstNameRules, lastNameRules }
     },
 }
 </script>

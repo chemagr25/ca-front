@@ -38,7 +38,7 @@ export default {
     setServices()
 
 
-    return { allServices };
+    return { allServices,setServices };
   },
 };
 </script>
@@ -49,7 +49,7 @@ export default {
   <div class="main w-full flex flex-col  items-center ">
 
     <Loader v-if="!allServices" />
-    <TableServices v-else :items="allServices" />
+    <TableServices @reload="setServices" v-else :items="allServices" />
 
 
 

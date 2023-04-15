@@ -2,7 +2,7 @@
 <template>
 
   <div
-  class="flex min-h-full      px-8 rounded-3xl  w-full sm:2/6 md:w-3/6 mt-28 login-form  shadow-lg   items-center   py-12 px-4 "
+  class="flex min-h-full      px-8 rounded-3xl  w-full sm:2/6 md:w-3/6 mt-28 login-form  shadow-lg   items-center   py-12 "
   >
     <div class="w-full  space-y-8">
       <div>

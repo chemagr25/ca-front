@@ -68,6 +68,11 @@
         <div class="w-full flex justify-end">
             <button @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar servicio</button>
         </div>
+        <div class="w-full flex justify-end">
+            <button @click="$emit('close')" class="btn  bg-indigo-900  capitalize font-normal mt-2">
+                Emitir
+            </button>
+        </div>
 
     </v-form>
 
@@ -86,13 +91,19 @@ import {
 } from "@heroicons/vue/24/outline";
 import apiResources from '../../api/apiResources';
 import swal from 'sweetalert';
+import { createToast } from "mosha-vue-toastify";
+
 
 export default {
     components: {
         DocumentPlusIcon,
     },
-    setup() {
-     
+    emits: ['close', 'newData'],
+    setup(_, ctx) {
+
+
+
+
         const form = ref(false)
         const dialog = ref(true)
 
@@ -148,18 +159,23 @@ export default {
                     }
                 }
                 )
-                swal({
-                    title: "Servicio creado correctamente",
-                    
-                    icon: "success",
-                });
-                console.log(resp);
+                createToast(
+                    {
+                        title: "Éxito",
+                        description: "Servicio creado correctamente",
+                    },
+                    { type: "success", timeout: 1500, hideProgressBar: true }
+                );
+                ctx.emit('newData')
             } catch (e) {
-                swal({
-                    title: "Ocurrió un error",
-                    
-                    icon: "error",
-                });
+                createToast(
+                    {
+                        title: "Error",
+                        description: "Revisa los datos e inténtalo nuevamente",
+                    },
+                    { type: "danger", timeout: 3000, hideProgressBar: true }
+                );
+
                 console.log(e);
 
             }

@@ -24,7 +24,8 @@ export default {
   props: {
     items: null,
   },
-  setup(props) {
+  emits: ['reload'],
+  setup(props,ctx) {
 
     
 
@@ -53,9 +54,14 @@ export default {
       }
     }
 
+    const pop = () => {
+      ctx.emit('reload')
+      
+    }
     return {
       statusFormat,
       styleBadge,
+      pop
 
     }
 
@@ -70,7 +76,7 @@ export default {
   <div class="filters-search-add w-full maxwi mb-3 p-2 bg-white rounded-lg">
     <div class="main px-3 w-full flex items-center justify-between">
       <div class="add-service w-1/6 md:w-1/2 gap-1  ">
-        <Dialog />
+        <Dialog @reload-table="pop"/>
       </div>
 
       <div class=" w-5/6 md:w-1/4 p flex items-center ">
