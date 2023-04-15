@@ -13,3 +13,7 @@ body {
 .all-view {
     height: 100vh;
 }
+
+.maxwi {
+    max-width: 1400px;
+}

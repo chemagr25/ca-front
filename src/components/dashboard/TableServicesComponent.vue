@@ -24,7 +24,9 @@ export default {
   props: {
     items: null,
   },
-  setup() {
+  setup(props) {
+
+    
 
     const statusFormat = (status) => {
       if (status === 'RECIBIDO') {
@@ -103,7 +105,7 @@ export default {
               <th class="pl-8">Acciones</th>
             </tr>
           </thead>
-          <tbody v-for="item in items" :key="item.id">
+          <tbody v-for=" (item,index) in items" :key="index">
             <!-- row 1 -->
             <tr>
               <td class="border-b text-sm capitalize">{{ item.id }}</td>

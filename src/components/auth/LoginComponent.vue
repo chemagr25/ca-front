@@ -103,15 +103,11 @@ const nextPage = () => {
 };
 
 const sendLogin = async () => {
-  // createToast({ title: 'some title', description: 'some good description'}, {type: 'success'})
   try {
     const res = await apiAuth.post("/login", {
       username: user.value,
       password: password.value,
     });
-
-    //  console.log(res);
-
     const { token, username, email, roles } = res.data;
 
     localStorage.setItem("token", token);

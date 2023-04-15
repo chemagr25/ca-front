@@ -38,7 +38,6 @@
 
 <script>
 import { ref } from 'vue'
-import FormClient from '../../components/forms/FormClient.vue';
 import FormService from '../forms/FormService.vue';
 
 import {
@@ -48,7 +47,6 @@ import {
 export default {
     components: {
         DocumentPlusIcon,
-        FormClient,
         FormService
     },
     setup() {
