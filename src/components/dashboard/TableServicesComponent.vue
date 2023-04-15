@@ -1,7 +1,7 @@
 
 <script>
 import { ref } from "vue";
-import FormService from "./DialogServicesComponent.vue";
+import Dialog from "./DialogServicesComponent.vue";
 
 import {
   ClipboardDocumentCheckIcon,
@@ -18,7 +18,7 @@ export default {
     XMarkIcon,
     EyeIcon,
     FunnelIcon,
-    FormService,
+    Dialog,
 
   },
   props: {
@@ -70,7 +70,7 @@ export default {
   <div class="filters-search-add w-full maxwi mb-3 p-2 bg-white rounded-lg">
     <div class="main px-3 w-full flex items-center justify-between">
       <div class="add-service w-1/6 md:w-1/2 gap-1  ">
-        <FormService />
+        <Dialog />
       </div>
 
       <div class=" w-5/6 md:w-1/4 p flex items-center ">
