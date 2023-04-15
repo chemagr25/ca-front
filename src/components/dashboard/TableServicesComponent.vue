@@ -51,7 +51,6 @@ export default {
       }
     }
 
-
     return {
       statusFormat,
       styleBadge,
@@ -61,31 +60,29 @@ export default {
   },
 
 
-
 };
 </script>
 
 
 <template>
   <div class="filters-search-add w-full maxwi mb-3 p-2 bg-white rounded-lg">
-
-    <div class="main w-full flex items-center justify-between">
+    <div class="main px-3 w-full flex items-center justify-between">
       <div class="add-service w-1/6 md:w-1/2 gap-1  ">
         <FormService />
       </div>
 
-      <div class=" w-5/6  md:w-1/4 flex items-center ">
+      <div class=" w-5/6 md:w-1/4 p flex items-center ">
         <div class="dropdown ml-auto">
           <label tabindex="0" class="btn border-none bg-white m-1">
             <FunnelIcon class="text-black w-7 " />
           </label>
-          <ul tabindex="0" class="dropdown-content rounded-lg menu p-2 shadow bg-white rounded-box w-52">
+          <ul tabindex="0" class="dropdown-content  menu p-2 shadow bg-white rounded-box w-52">
             <p class="hover:bg-gray-100 px-3 py-1 rounded">Recibido</p>
             <p class="hover:bg-gray-100 px-3 py-1 rounded">En proceso</p>
             <p class="hover:bg-gray-100 px-3 py-1 rounded">Cancelado</p>
           </ul>
         </div>
-        <input type="text" placeholder="Buscar" class="input bg-gray-100 input-bordered input-sm w-full " />
+        <input type="text" placeholder="Buscar" class="input bg-gray-100 input-bordered input-sm h-12 w-full " />
       </div>
 
     </div>

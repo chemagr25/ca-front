@@ -52,31 +52,19 @@ const getRole = () => {
 
 const ServiceActions = [
   {
-    name: "Ver todos los servicios",
+    name: "Ver servicios",
     description: "",
     href: "services",
     icon: ClipboardDocumentCheckIcon,
-  },
-  {
-    name: "Agregar servicio",
-    description: "",
-    href: "services",
-    icon: DocumentPlusIcon,
-  },
+  }
 ];
 
 const CustomerActions = [
   {
-    name: "Ver todos los clientes",
+    name: "Ver  clientes",
     description: " ",
     href: "services",
     icon: UserGroupIcon,
-  },
-  {
-    name: "Agregar cliente",
-    description: "",
-    href: "services",
-    icon: UserPlusIcon,
   },
 ];
 const TechActions = [
@@ -85,19 +73,7 @@ const TechActions = [
     description: " ",
     href: "services",
     icon: WrenchScrewdriverIcon,
-  },
-  {
-    name: "Agregar técnicos",
-    description: "",
-    href: "services",
-    icon: DocumentPlusIcon,
-  },
-  {
-    name: "Ver servicios  por técnico",
-    description: "",
-    href: "services",
-    icon: EyeIcon,
-  },
+  }
 ];
 const callsToAction = [];
 const user = {
@@ -112,9 +88,11 @@ const mobileMenuOpen = ref(false);
 <template  class="p-1">
   <header class="bg-white w-full lg:shadow-sm rounded-xl">
     <nav class="flex p-4 justify-between items-center" aria-label="Global">
-      <div @click="clearSession" class="flex lg:flex-1">
+      <div  class="flex lg:flex-1">
         <img
-          class="h-10 w-auto rounded-lg"
+        @click="clearSession"
+
+          class="h-10 cursor-pointer w-auto rounded-lg"
           src="../assets/imgs/logo.jpg"
           alt="CompuActual"
         />

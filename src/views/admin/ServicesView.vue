@@ -6,6 +6,7 @@ import TableServices from "../../components/dashboard/TableServicesComponent.vue
 import getAllServices from "../../api/resources/getAllServices";
 import Loader from "../../components/LoaderComponent.vue";
 
+
 export default {
   components: {
     TableServices,
@@ -45,7 +46,7 @@ export default {
 
 
 <template >
-  <div class="main ">
+  <div class="main w-full flex flex-col  items-center ">
 
     <Loader v-if="!allServices" />
     <TableServices v-else :items="allServices" />

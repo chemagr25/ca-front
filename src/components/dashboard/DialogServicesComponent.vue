@@ -1,6 +1,6 @@
 <template>
-    <v-row justify="center">
-        <v-dialog class="" v-model="dialog" width="1024">
+    <v-row>
+        <v-dialog class=" p-5" v-model="dialog" width="1024">
             <template v-slot:activator="{ props }">
                 <div class=" mr-auto pl-3">
                     <button class="btn btn-primary flex justify-center    bg-indigo-900" color="primary" v-bind="props">
@@ -10,40 +10,16 @@
                 </div>
 
             </template>
+            <v-row>
+                <v-dialog class=" mb-5 p-5" v-model="dialog" width="1024">
 
-
-            <v-card>
-                <v-tabs v-model="tab" class="bg-indigo-900 text-white">
-                    <v-tab value="one">
-                        <p class="capitalize">Cliente</p>
-                    </v-tab>
-                    <v-tab value="two">
-                        <p class="capitalize">Dispositivo</p>
-                    </v-tab>
-
-                </v-tabs>
-
-                <v-card-text>
-                    <v-window v-model="tab">
-                        <v-window-item value="one">
-                            <v-card  variant="outlined" class="overflow-y-auto border-none  pb-5" max-height="1200">
-                                <FormClient />
-                            </v-card>
-                        </v-window-item>
-
-                        <v-window-item value="two">
-                            Two
-                        </v-window-item>
-
-                        <v-window-item value="three">
-                            Three
-                        </v-window-item>
-                    </v-window>
-                </v-card-text>
-            </v-card>
-
-
-
+                    <v-card class="overflow-y-auto" height="600">
+                        <v-card-text>
+                            <FormService />
+                        </v-card-text>
+                    </v-card>
+                </v-dialog>
+            </v-row>
         </v-dialog>
     </v-row>
 </template>
@@ -54,15 +30,17 @@
     border: none !important;
 }
 
-
+.text-white {
+    color: #fff !important;
+}
 </style>
 
 
 <script>
 import { ref } from 'vue'
 import FormClient from '../../components/forms/FormClient.vue';
+import FormService from '../forms/FormService.vue';
 
-import { useField, useForm } from 'vee-validate'
 import {
     DocumentPlusIcon,
 } from "@heroicons/vue/24/outline";
@@ -70,12 +48,13 @@ import {
 export default {
     components: {
         DocumentPlusIcon,
-        FormClient
+        FormClient,
+        FormService
     },
     setup() {
         const firstName = ref(null)
         const lastName = ref(null)
-        const dialog = ref(true)
+        const dialog = ref(false)
         const tab = ref(null)
 
         const firstNameRules = ref([
