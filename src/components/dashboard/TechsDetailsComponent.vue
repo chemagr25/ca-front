@@ -15,16 +15,16 @@ export default {
 
   setup(props) {
     //reactive data
-    const service = ref(null);
+    const tech = ref(null);
 
     const getService = async () => {
       try {
-        const resp = await apiResources.get(`/services/${props.idService}`, {
+        const resp = await apiResources.get(`/technicians/${props.idService}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         });
-        service.value = resp.data;
+        tech.value = resp.data;
         console.log(resp.data);
       } catch (e) {
         if (e.response.status === 401) {
@@ -54,27 +54,20 @@ export default {
     };
 
 
-    return { service,capitalize, getColor };
+    return { tech,capitalize, getColor };
   },
 };
 </script>
 
 <template>
 
-  <div v-if="!service" class=" flex  justify-center"> <Loader></Loader> </div>
+  <div v-if="!tech" class=" flex  justify-center"> <Loader></Loader> </div>
   <div v-else class=" w-full   flex flex-col items-center  rounded-lg">
     <div class="w-full bg-white rounded-lg  main-cont  flex col">
       <div class="cont flex flex-col">
-        <p>{{ service.id }}</p>
-        <p>{{ service.dateReceived }}</p>
-        <p>{{ service.dateDelivered ? service.dateDelivered  : 'NA' }}</p>
-        <p>{{ service.description}}</p>
-        <p>{{ service.devices[0] ? service.devices[0].brand + ' ' + service.devices[0].model : 'NO hay data'  }}</p>
-        <p>{{ service.client ? service.client.username + ' ' + service.client.email  : 'NO hay data'  }}</p>
-        <p>{{ service.status }}</p>
-        <p>{{ service.technicians.name }}</p>
-
-        <p>{{service.valoration ? service.valoration : 'No hay Volaración'}}</p>
+        <p>{{ tech.id }}</p>
+        <p>{{ tech }}</p>
+       
 
       </div>
 

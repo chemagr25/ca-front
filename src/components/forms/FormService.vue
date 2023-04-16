@@ -63,16 +63,20 @@
                     hint="Decripcion del servicio" label="Descripción del servicio"></v-textarea>
             </v-col>
         </v-row>
-        <v-row class=" w-11/12 ml-4 flex justify-end mt-5 items-center ">
-        </v-row>
-        <div class="w-full flex justify-end">
+     <div class="buttons flex flex-row-reverse items-center mt-4">
+        <div class="w-full flex justify-end ">
             <button @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar servicio</button>
         </div>
-        <div class="w-full flex justify-end">
-            <button @click="$emit('close')" class="btn  bg-indigo-900  capitalize font-normal mt-2">
-                Emitir
+        <div class="w-full ">
+            <button @click="$emit('close')" class="btn   bg-indigo-900  capitalize font-normal mt-2">
+                cerrar
             </button>
         </div>
+
+     </div>
+           
+        
+      
 
     </v-form>
 

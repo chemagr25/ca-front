@@ -71,7 +71,7 @@ const TechActions = [
   {
     name: "Ver técnicos",
     description: " ",
-    href: "services",
+    href: "techs",
     icon: WrenchScrewdriverIcon,
   }
 ];

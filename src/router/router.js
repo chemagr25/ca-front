@@ -51,26 +51,39 @@ const routes = [
         name: 'root',
         component: () => import('../views/admin/AdminDashboard.vue')
       },
-
       {
         path: 'dashboard/servicios',
         beforeEnter: [isAdminGuard],
         name: 'services',
         component: () => import('../views/admin/ServicesView.vue'),
-        children: [
-          
-        ]
+   
+
+      },
+      {
+        path: 'dashboard/tecnicos',
+        beforeEnter: [isAdminGuard],
+        name: 'techs',
+        component: () => import('../views/admin/TechsView.vue'),
+   
 
       },
       {
         path: 'servicios/:id',
         beforeEnter: [isAdminGuard],
         name: 'services-details',
-
         component: () => import('../views/admin/ServiceDatailsView.vue'),
 
 
       },
+      {
+        path: 'tecnicos/:id',
+        beforeEnter: [isAdminGuard],
+        name: 'techs-details',
+        component: () => import('../views/admin/TechDetailsView.vue'),
+
+
+      },
+   
 
     ]
   },
