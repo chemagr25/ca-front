@@ -63,7 +63,7 @@ const CustomerActions = [
   {
     name: "Ver  clientes",
     description: " ",
-    href: "services",
+    href: "clients",
     icon: UserGroupIcon,
   },
 ];

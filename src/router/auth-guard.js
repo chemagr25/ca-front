@@ -24,6 +24,15 @@ export const isAdminGuard = async (to, from, next) => {
     next({ name: 'login' })
     return
 }
+export const isAdmod = async (to, from, next) => {
+    if (localStorage.getItem('roles') === 'ROLE_ADMIN' || localStorage.getItem('roles') === 'ROLE_MODERATOR') {
+        next()
+        return
+    }
+    next({ name: 'login' })
+    return
+}
+
 
 
 

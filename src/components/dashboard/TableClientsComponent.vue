@@ -1,7 +1,7 @@
 
 <script>
 import { ref } from "vue";
-import DialogTech from "./DialogTechsComponent.vue";
+import DialogClients from "./DialogClientsComponent.vue";
 
 import {
   ClipboardDocumentCheckIcon,
@@ -18,7 +18,7 @@ export default {
     XMarkIcon,
     EyeIcon,
     FunnelIcon,
-    DialogTech,
+    DialogClients,
 
   },
   props: {
@@ -28,39 +28,12 @@ export default {
   setup(props,ctx) {
 
     
-
-    const statusFormat = (status) => {
-      if (status === 'RECIBIDO') {
-        return 'Recibido'
-      }
-      if (status === 'EN_PROCESO') {
-        return 'En proceso'
-      }
-      if (status === 'FINISHED') {
-        return 'Finalizado'
-      }
-
-    }
-
-    const styleBadge = (status) => {
-      if (status === 'RECIBIDO') {
-        return 'badge-success'
-      }
-      if (status === 'EN_PROCESO') {
-        return 'badge-warning'
-      }
-      if (status === 'FINISHED') {
-        return 'badge-success'
-      }
-    }
-
     const pop = () => {
       ctx.emit('reload')
       
     }
     return {
-      statusFormat,
-      styleBadge,
+   
       pop
 
     }
@@ -76,7 +49,7 @@ export default {
   <div class="filters-search-add w-full maxwi mb-3 p-2 bg-white rounded-lg">
     <div class="main px-3 w-full flex items-center justify-between">
       <div class="add-service w-1/6 md:w-1/2 gap-1  ">
-        <DialogTech @reload-table="pop"/>
+        <DialogClients @reload-table="pop"/>
       </div>
 
       <div class=" w-5/6 md:w-1/4 p flex items-center ">
@@ -105,23 +78,31 @@ export default {
             <tr>
               <td>id</td>
               <th>nombre</th>
-              <th>Nombre de usuario</th>
-              <th>Correo</th>
+              <th>Apellidos</th>
+              <th>username</th>
+              <th>correo</th>
+
               <th>Telefono</th>
               <th class="pl-8">Acciones</th>
             </tr>
           </thead>
           <tbody v-for=" (item,index) in items" :key="index">
-            <!-- {{ item }} -->
+
+          
             <tr>
               <td class="border-b text-sm capitalize">{{ index +1 }}</td>
               <td class="border-b text-sm capitalize">
-                <div class="tooltip" :data-tip="item.name + ' ' + item.lastName">
-                  <div class="info">{{ item.name + ' ' + item.lastName}} </div>
+                <div class="tooltip" :data-tip="item.name">
+                  <div class="info">{{ item.name}} </div>
                 </div>
               </td>
               <td class="border-b text-sm capitalize">
-                <div class="tooltip" :data-tip="item.username">
+                <div class="tooltip" :data-tip="item.lastName">
+                  <div class="info">{{ item.lastName }} </div>
+                </div>
+              </td>
+              <td class="border-b text-sm capitalize">
+                <div class="tooltip" >
                   <div class="info">{{ item.username }} </div>
                 </div>
               </td>
@@ -132,7 +113,6 @@ export default {
               </td>
              
               <td class="border-b  text-sm capitalize ">
-                <!-- <div class="info"> {{ item.technicians.name }} maria GArcia Ramirez GArcia Ramirez</div> -->
                 <div class="tooltip" :data-tip="'hola'">
                   <div class="info">{{ item.phone }} </div>
                 </div>
@@ -140,7 +120,7 @@ export default {
               <td class="border-b">
                 <div class=" badge badge-ghost py-3">
                   <EyeIcon class="h-5 mr-2 w-5 text-indigo-900" /> <router-link
-                    :to="{ name: 'techs-details', params: { id: item.id } }">Ver Detalles</router-link>
+                    :to="{ name: 'clients-details', params: { id: item.id } }">Ver Detalles</router-link>
                 </div>
               </td>
             </tr>
@@ -150,6 +130,8 @@ export default {
 
 
       </div>
+
+   
 
 
 

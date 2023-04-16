@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import {  loginGuard,roleGuard,isAdminGuard,isUserGuard,isTechGuard } from './auth-guard'
+import {  loginGuard,roleGuard,isAdminGuard,isUserGuard,isTechGuard,isAdmod } from './auth-guard'
 
 
 const routes = [
@@ -52,15 +52,15 @@ const routes = [
         component: () => import('../views/admin/AdminDashboard.vue')
       },
       {
-        path: 'dashboard/servicios',
-        beforeEnter: [isAdminGuard],
+        path: '/servicios',
+        beforeEnter: [isAdmod],
         name: 'services',
         component: () => import('../views/admin/ServicesView.vue'),
    
 
       },
       {
-        path: 'dashboard/tecnicos',
+        path: '/tecnicos',
         beforeEnter: [isAdminGuard],
         name: 'techs',
         component: () => import('../views/admin/TechsView.vue'),
@@ -68,7 +68,15 @@ const routes = [
 
       },
       {
-        path: 'servicios/:id',
+        path: '/clientes',
+        beforeEnter: [isAdminGuard],
+        name: 'clients',
+        component: () => import('../views/admin/ClientsView.vue'),
+   
+
+      },
+      {
+        path: '/servicios/:id',
         beforeEnter: [isAdminGuard],
         name: 'services-details',
         component: () => import('../views/admin/ServiceDatailsView.vue'),
@@ -76,13 +84,22 @@ const routes = [
 
       },
       {
-        path: 'tecnicos/:id',
+        path: '/tecnicos/:id',
         beforeEnter: [isAdminGuard],
         name: 'techs-details',
         component: () => import('../views/admin/TechDetailsView.vue'),
 
 
       },
+      {
+        path: '/clientes/:id',
+        beforeEnter: [isAdminGuard],
+        name: 'clients-details',
+        component: () => import('../views/admin/ClientsDetailsView.vue'),
+
+
+      },
+
    
 
     ]

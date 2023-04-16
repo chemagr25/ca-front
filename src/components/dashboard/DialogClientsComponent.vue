@@ -5,7 +5,7 @@
                 <div class=" mr-auto pl-3">
                     <button class="btn btn-primary flex justify-center    bg-indigo-900" color="primary" v-bind="props">
                         <DocumentPlusIcon class="h-5 w-5 text-white" />
-                        <p class="hidden md:block ml-2 capitalize text-sm font-normal"> Agregar tecnico</p>
+                        <p class="hidden md:block ml-2 capitalize text-sm font-normal"> Agregar cliente</p>
                     </button>
                 </div>
 
@@ -15,7 +15,7 @@
 
                     <v-card class="overflow-y-auto rounded-lg" height="550">
                         <v-card-text>
-                            <FormTech  @new-data="newData" @close="dialog = false"/>
+                            <FormClient  @new-data="newData" @close="dialog = false"/>
                         </v-card-text>
                     </v-card>
                 </v-dialog>
@@ -38,7 +38,7 @@
 
 <script>
 import { ref } from 'vue'
-import FormTech from '../forms/FormTech.vue';
+import FormClient from '../forms/FormClient.vue';
 
 import {
     DocumentPlusIcon,
@@ -47,7 +47,7 @@ import {
 export default {
     components: {
         DocumentPlusIcon,
-        FormTech
+        FormClient
     },
     emits: ['reloadTable'],
     setup(_,ctx) {

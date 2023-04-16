@@ -1,7 +1,7 @@
 <template>
     <v-form class="pb-8" v-model="form" @submit.prevent>
         <div class="titles w-100 flex items-center justify-center bg-indigo-900 text-white rounded p-3">
-            <p class="font-bold  text-lg">Agregar técnico</p>
+            <p class="font-bold  text-lg">Agregar cliente</p>
         </div>
         <v-row class=" mt-4">
           
@@ -22,10 +22,8 @@
                 <v-text-field persistent-hint hint="Correo personal" class=" shadow bg-gray-100 pb-2 rounded"
                     v-model="email" label="e-mail"></v-text-field>
             </v-col>
-            <v-col cols="12" sm="6" >
-                <v-text-field persistent-hint hint="Contraseña para iniciar sesión" class="shadow bg-gray-100 pb-2 rounded" v-model="password"
-                    label="Contraseña"></v-text-field>
-            </v-col>
+        
+   
 
             
             <v-col cols="12" sm="6" >
@@ -38,7 +36,7 @@
         </v-row>
         <div class="buttons flex flex-row-reverse items-center mt-4">
             <div class="w-full flex justify-end ">
-                <button @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar técnico</button>
+                <button @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar cliente</button>
             </div>
             <div class="w-full ">
                 <button @click="$emit('close')" class="btn   bg-indigo-900  capitalize font-normal mt-2">
@@ -85,8 +83,8 @@ export default {
         const form = ref(false)
         const dialog = ref(true)
         const username = ref(null)
+     
         const email = ref(null)
-        const password = ref(null)
         const name = ref(null)
         const lastName = ref(null)
         const phone = ref(null)
@@ -99,8 +97,8 @@ export default {
             return {
                 "username": username.value,
                 "email": email.value,
-                "password": password.value,
                 "name": name.value,
+                "password": 'Movistar1',
                 "lastName": lastName.value,
                 "phone": phone.value
             }
@@ -108,7 +106,7 @@ export default {
 
         const sendData = async () => {
             try {
-                const resp = await apiAuth.post('/registerTechnician', setService(), {
+                const resp = await apiAuth.post('/registerUser', setService(), {
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('token')
                     }
@@ -117,7 +115,7 @@ export default {
                 createToast(
                     {
                         title: "Éxito",
-                        description: "Tecnico Creado",
+                        description: "Usuario",
                     },
                     { type: "success", timeout: 1500, hideProgressBar: true }
                 );
@@ -188,7 +186,7 @@ export default {
             dialog,
             username,
             email,
-            password,
+         
             name,
             lastName,
             phone,

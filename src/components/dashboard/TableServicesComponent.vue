@@ -98,7 +98,7 @@ export default {
   <div class="root  flex justify-center items-center flex-col w-full ">
     <div class="main-cont w-full flex justify-center   bg-white  p-5 rounded-lg">
 
-      <div class=" hidden md:block overflow-x-auto w-full cont-table">
+      <div class="  overflow-x-auto w-full cont-table">
         <table class="table table-zebra w-full">
           <!-- head -->
           <thead>
@@ -112,12 +112,14 @@ export default {
             </tr>
           </thead>
           <tbody v-for=" (item,index) in items" :key="index">
+            
             <!-- row 1 -->
             <tr>
               <td class="border-b text-sm capitalize">{{ item.id }}</td>
               <td class="border-b text-sm capitalize">
-                <div class="tooltip" :data-tip="item.client.username">
-                  <div class="info">{{ item.client.username }} </div>
+                <div class="tooltip" :data-tip="item.client.name + ' ' + item.client.lastName">
+                  <!-- <div class="info">{{ item.client.name + ' ' + item.client.lastName}} </div> -->
+                  <router-link :to="{ name: 'clients-details', params: {id:item.client.id} }"> {{ item.client.name + ' ' + item.client.lastName }}</router-link>
                 </div>
               </td>
               <td class="border-b text-sm capitalize">{{ item.devices[0] ? item.devices[0].brand + ' ' +
@@ -125,7 +127,8 @@ export default {
               <td class="border-b  text-sm capitalize ">
                 <!-- <div class="info"> {{ item.technicians.name }} maria GArcia Ramirez GArcia Ramirez</div> -->
                 <div class="tooltip" :data-tip="item.technicians.name">
-                  <div class="info">{{ item.technicians.name }} </div>
+                  <!-- <div class="info">{{ item.technicians.name + ' ' + item.technicians.lastName   }} </div> -->
+                  <router-link :to="{ name: 'techs-details', params: {id:item.technicians.id} }"> {{item.technicians.name + ' ' + item.technicians.lastName }}</router-link>
                 </div>
               </td>
               <td class="border-b text-sm capitalize ">
@@ -148,10 +151,6 @@ export default {
 
       </div>
 
-      <div class="w-full border md:hidden ">
-
-
-      </div>
 
 
 
