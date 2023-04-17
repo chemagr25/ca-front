@@ -154,33 +154,36 @@ export default {
 
       </div>
 
-      <div class=" -mt-7 cards-mobile flex flex-col w-100 sm:hidden">
+      <div class=" -mt-7 cards-mobile flex flex-col wi sm:hidden">
         <div v-for="(item, index) in items" :key="index">
-          <div class="cards  p-4 w-full mt-6 flex flex-col bg-white rounded-lg shadow-lg">
-            <div class="flex mt-3 w-full justify-around flex-row">
+          <div class="cards  px-4 py-2 w-full mt-6 flex flex-col bg-white rounded-lg shadow-lg">
+            <div class="flex  w-full justify-between flex-row">
               <div >
-                <p>Folio</p>
-                <p>{{ item.folio ? item.folio : 'CA00000000' }}</p>
+                <p class="text-gray-500 text-sm">Folio</p>
+                <p class="font-bold">{{ item.folio ? item.folio : 'CA00000000' }}</p>
               </div>
               <div class="date">
-                <p>Fecha</p>
-                <p>{{ item.dateReceived ? item.dateReceived : 'No hay data' }}</p>
+                <p class="text-gray-500 text-sm text-center">Fecha</p>
+                
+                <p class="font-bold">{{ item.dateReceived ? item.dateReceived : 'No hay data' }}</p>
               </div>
 
             </div>
-            <div class="flex mt-3 w-full justify-around  flex-row">
+
+            <div class="flex mt-3 w-full justify-between  flex-row">
               <div >
-                <p>Dispositivo</p>
+                <p class="text-gray-500 text-sm">Nombre del cliente</p>
+
+                <p class="info capitalize">{{ item.client.name + ' ' + item.client.lastName }}</p>
+              </div>
+              <div class="date">
+                <p class="text-gray-500 text-sm">Dispositivo</p>
                 <p class="info">{{ item.devices[0] ? item.devices[0].brand + ' ' +
                 item.devices[0].model : '' }}</p>
               </div>
-              <div class="date">
-                <p>Cliente</p>
-                <p class="info">{{ item.client.name + ' ' + item.client.lastName }}</p>
-              </div>
             </div>
       
-            <div class="flex mt-3 w-full justify-between items-center gap-8  flex-row">
+            <div class="flex  mt-4 mb-2 w-full justify-between items-center gap-8  flex-row">
               <div >
                 <div :class="styleBadge(item.status ? item.status : 'badge-ghost')"
                   class="badge py-3  text-white border-none">
@@ -241,6 +244,10 @@ export default {
 .maxwi {
 
   max-width: 1400px;
+}
+
+.wi {
+  width: 80%;
 }
 
 .info {
