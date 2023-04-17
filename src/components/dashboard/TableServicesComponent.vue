@@ -247,7 +247,7 @@ export default {
 }
 
 .wi {
-  width: 80%;
+  width: 95%;
 }
 
 .info {
