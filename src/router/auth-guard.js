@@ -49,6 +49,16 @@ export const loginGuard = async (to, from, next) => {
 
 }
 
+export const loginGuard2 = async (to, from, next) => {
+    if (localStorage.getItem('token')) {
+        next()
+        return
+    }
+    next({ name: 'main-log' })
+    return
+
+}
+
 export const roleGuard = async (to, from, next) => {
 
     if (localStorage.getItem('roles') == 'ROLE_ADMIN') {

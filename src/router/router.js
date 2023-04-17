@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import {  loginGuard,roleGuard,isAdminGuard,isUserGuard,isTechGuard,isAdmod } from './auth-guard'
+import {  loginGuard,roleGuard,isAdminGuard,isUserGuard,isTechGuard,isAdmod,loginGuard2 } from './auth-guard'
 
 
 const routes = [
@@ -78,7 +78,7 @@ const routes = [
       },
       {
         path: '/servicios/:id',
-        beforeEnter: [loginGuard],
+        beforeEnter: [loginGuard2],
         name: 'services-details',
         component: () => import('../views/admin/ServiceDatailsView.vue'),
 
