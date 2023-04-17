@@ -86,7 +86,7 @@ const routes = [
       },
       {
         path: '/tecnicos/:id',
-        beforeEnter: [isAdminGuard],
+        beforeEnter: [isAdmod],
         name: 'techs-details',
         component: () => import('../views/admin/TechDetailsView.vue'),
 
@@ -94,7 +94,7 @@ const routes = [
       },
       {
         path: '/clientes/:id',
-        beforeEnter: [isAdminGuard],
+        beforeEnter: [loginGuard2],
         name: 'clients-details',
         component: () => import('../views/admin/ClientsDetailsView.vue'),
 
