@@ -69,7 +69,8 @@ const routes = [
       },
       {
         path: '/clientes',
-        beforeEnter: [isAdminGuard],
+        beforeEnter: [isAdmod],
+       
         name: 'clients',
         component: () => import('../views/admin/ClientsView.vue'),
    
