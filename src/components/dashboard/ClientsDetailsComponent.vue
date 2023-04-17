@@ -25,7 +25,7 @@ export default {
           },
         });
         tech.value = resp.data;
-        console.log(resp.data);
+     
       } catch (e) {
         if (e.response.status === 401) {
           localStorage.clear();
