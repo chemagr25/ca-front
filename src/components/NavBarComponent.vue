@@ -213,23 +213,23 @@ const mobileMenuOpen = ref(false);
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
               
-              <router-link @click="mobileMenuOpen = false"
+              <router-link  v-if=" getRole() === 'ROLE_ADMIN' || getRole() === 'ROLE_MODERATOR' "  @click="mobileMenuOpen = false"
               :to="{name: 'services'}"
                 
                 class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Servicios</router-link
               >
-              <router-link @click="mobileMenuOpen = false"
+              <router-link v-if=" getRole() === 'ROLE_ADMIN'" @click="mobileMenuOpen = false"
               :to="{name: 'techs'}"
                 
                 class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Técnicos</router-link
               >
-              <router-link @click="mobileMenuOpen = false"
+              <router-linkr v-if=" getRole() === 'ROLE_ADMIN' || getRole() === 'ROLE_MODERATOR' " @click="mobileMenuOpen = false"
               :to="{name: 'clients'}"
                 
                 class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >Clientes</router-link
+                >Clientes</router-linkr
               >
               <div
                

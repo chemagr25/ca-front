@@ -25,9 +25,9 @@ export default {
     items: null,
   },
   emits: ['reload'],
-  setup(props,ctx) {
+  setup(props, ctx) {
 
-    
+
 
     const statusFormat = (status) => {
       if (status === 'RECIBIDO') {
@@ -56,7 +56,7 @@ export default {
 
     const pop = () => {
       ctx.emit('reload')
-      
+
     }
     return {
       statusFormat,
@@ -76,10 +76,10 @@ export default {
   <div class="filters-search-add w-full maxwi mb-3 p-2 bg-white rounded-lg">
     <div class="main px-3 w-full flex items-center justify-between">
       <div class="add-service w-1/6 md:w-1/2 gap-1  ">
-        <Dialog @reload-table="pop"/>
+        <Dialog @reload-table="pop" />
       </div>
 
-      <div class=" w-5/6 md:w-1/4 p flex items-center ">
+      <div class=" w-5/6 md:w-1/4  flex items-center ">
         <div class="dropdown ml-auto">
           <label tabindex="0" class="btn border-none bg-white m-1">
             <FunnelIcon class="text-black w-7 " />
@@ -96,9 +96,9 @@ export default {
     </div>
   </div>
   <div class="root  flex justify-center items-center flex-col w-full ">
-    <div class="main-cont w-full flex justify-center   bg-white  p-5 rounded-lg">
+    <div class=" main-cont w-full flex justify-center   md:bg-white  p-5 rounded-lg">
 
-      <div class="  overflow-x-auto w-full cont-table">
+      <div class=" hidden sm:block overflow-x-auto w-full cont-table">
         <table class="table table-zebra w-full">
           <!-- head -->
           <thead>
@@ -111,15 +111,16 @@ export default {
               <th class="pl-8">Acciones</th>
             </tr>
           </thead>
-          <tbody v-for=" (item,index) in items" :key="index">
-            
+          <tbody v-for=" (item, index) in items" :key="index">
+
             <!-- row 1 -->
             <tr>
-              <td class="border-b text-sm capitalize">{{ item.id }}</td>
+              <td class="border-b text-sm capitalize">{{ item.folio ? item.folio : 'CA00000000' }}</td>
               <td class="border-b text-sm capitalize">
                 <div class="tooltip" :data-tip="item.client.name + ' ' + item.client.lastName">
                   <!-- <div class="info">{{ item.client.name + ' ' + item.client.lastName}} </div> -->
-                  <router-link :to="{ name: 'clients-details', params: {id:item.client.id} }"> {{ item.client.name + ' ' + item.client.lastName }}</router-link>
+                  <router-link :to="{ name: 'clients-details', params: { id: item.client.id } }"> {{ item.client.name + '' + 
+                  item.client.lastName }}</router-link>
                 </div>
               </td>
               <td class="border-b text-sm capitalize">{{ item.devices[0] ? item.devices[0].brand + ' ' +
@@ -128,7 +129,9 @@ export default {
                 <!-- <div class="info"> {{ item.technicians.name }} maria GArcia Ramirez GArcia Ramirez</div> -->
                 <div class="tooltip" :data-tip="item.technicians.name">
                   <!-- <div class="info">{{ item.technicians.name + ' ' + item.technicians.lastName   }} </div> -->
-                  <router-link :to="{ name: 'techs-details', params: {id:item.technicians.id} }"> {{item.technicians.name + ' ' + item.technicians.lastName }}</router-link>
+                  <router-link :to="{ name: 'techs-details', params: { id: item.technicians.id } }"> {{
+                    item.technicians.name
+                    + ' ' + item.technicians.lastName }}</router-link>
                 </div>
               </td>
               <td class="border-b text-sm capitalize ">
@@ -148,6 +151,61 @@ export default {
         </table>
 
 
+
+      </div>
+
+      <div class=" -mt-7 cards-mobile flex flex-col w-100 sm:hidden">
+        <div v-for="(item, index) in items" :key="index">
+          <div class="cards  p-4 w-full mt-6 flex flex-col bg-white rounded-lg shadow-lg">
+            <div class="flex mt-3 w-full justify-around flex-row">
+              <div >
+                <p>Folio</p>
+                <p>{{ item.folio ? item.folio : 'CA00000000' }}</p>
+              </div>
+              <div class="date">
+                <p>Fecha</p>
+                <p>{{ item.dateReceived ? item.dateReceived : 'No hay data' }}</p>
+              </div>
+
+            </div>
+            <div class="flex mt-3 w-full justify-around  flex-row">
+              <div >
+                <p>Dispositivo</p>
+                <p class="info">{{ item.devices[0] ? item.devices[0].brand + ' ' +
+                item.devices[0].model : '' }}</p>
+              </div>
+              <div class="date">
+                <p>Cliente</p>
+                <p class="info">{{ item.client.name + ' ' + item.client.lastName }}</p>
+              </div>
+            </div>
+      
+            <div class="flex mt-3 w-full justify-between items-center gap-8  flex-row">
+              <div >
+                <div :class="styleBadge(item.status ? item.status : 'badge-ghost')"
+                  class="badge py-3  text-white border-none">
+                  {{ item.status ? statusFormat(item.status) : 'No hay información' }}
+                </div>
+              </div>
+              <div class="date">
+
+                <div class=" badge badge-ghost py-3">
+                  <EyeIcon class="h-5 mr-2 w-5 text-indigo-900" /> <router-link
+                    :to="{ name: 'services-details', params: { id: item.id } }">Ver Detalles</router-link>
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -191,8 +249,6 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-
 </style>
 
 

@@ -81,7 +81,7 @@ export default {
           <div class="data-received flex bg-gray-50 rounded p-2 justify-between ">
             <div>
               <p>Folio</p>
-              <p>{{ service.id }}</p>
+              <p>{{ service.folio ? service.folio : 'CA000000000' }}</p>
             </div>
             <div>
               <p>Técnico</p>

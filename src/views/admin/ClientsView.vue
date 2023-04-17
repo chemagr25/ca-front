@@ -57,8 +57,5 @@ export default {
     <Loader v-if="!allClients" />
     <TableClients v-else @reload="setClients" 
      :items="allClients" />
-
-
-
   </div>
 </template>
