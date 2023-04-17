@@ -128,7 +128,24 @@ export default {
         const clientsSuggestions = ref(null)
         const clientsSelect = ref(null)
 
+         const isTech = () => {
+            console.log(localStorage.getItem('roles'));
+           
+            
+            if(localStorage.getItem('roles') == 'ROLE_MODERATOR'){
 
+                console.log('aqui toy ');
+                
+
+                console.log(localStorage.getItem('id'));
+                
+            techSelect.value = localStorage.getItem('id')
+            technician.value = localStorage.getItem('username')
+                
+            } 
+         }
+
+         isTech()
 
 
         const setService = () => {
@@ -194,6 +211,7 @@ export default {
         const selectTech = (name, id) => {
             technician.value = name
             techSelect.value = id
+           
 
         }
         const selectClient = (name, id) => {
