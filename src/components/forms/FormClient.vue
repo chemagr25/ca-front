@@ -98,7 +98,6 @@ export default {
                 "username": username.value,
                 "email": email.value,
                 "name": name.value,
-                "password": 'Movistar1',
                 "lastName": lastName.value,
                 "phone": phone.value
             }

@@ -5,16 +5,13 @@ import NavBar from "../../components/NavBarComponent.vue";
 
 
 <template class="h-full  flex flex-column ">
-  <div class="nav w-full flex justify-center fixed px-3  mt-2">
-    <NavBar class="" />
+  <div class="nav w-full flex justify-center  px-3  mt-2">
+    <NavBar />
 
   </div>
 
   <div class="w-full main  p-5">
-    <p>Customer Layout</p>
-    <router-view class="  rounded-lg mt-20 "></router-view>
+    <router-view  ></router-view>
   </div>
 </template>
-   
-   
    

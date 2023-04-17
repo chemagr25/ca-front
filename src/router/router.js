@@ -41,7 +41,7 @@ const routes = [
   },
   {
     path: '/admin',
-    beforeEnter: [isAdminGuard],
+    // beforeEnter: [isAdmod],
     redirect: { name: 'root'},
     component: () => import('../layouts/admin/AdminLayout.vue'),
     children: [
@@ -53,7 +53,7 @@ const routes = [
       },
       {
         path: '/servicios',
-        beforeEnter: [isAdmod],
+        // beforeEnter: [isAdmod],
         name: 'services',
         component: () => import('../views/admin/ServicesView.vue'),
    
@@ -61,7 +61,7 @@ const routes = [
       },
       {
         path: '/tecnicos',
-        beforeEnter: [isAdminGuard],
+        // beforeEnter: [isAdminGuard],
         name: 'techs',
         component: () => import('../views/admin/TechsView.vue'),
    
@@ -69,7 +69,7 @@ const routes = [
       },
       {
         path: '/clientes',
-        beforeEnter: [isAdminGuard],
+        // beforeEnter: [isAdminGuard],
         name: 'clients',
         component: () => import('../views/admin/ClientsView.vue'),
    
@@ -77,7 +77,7 @@ const routes = [
       },
       {
         path: '/servicios/:id',
-        beforeEnter: [isAdminGuard],
+        // beforeEnter: [loginGuard],
         name: 'services-details',
         component: () => import('../views/admin/ServiceDatailsView.vue'),
 
@@ -85,7 +85,7 @@ const routes = [
       },
       {
         path: '/tecnicos/:id',
-        beforeEnter: [isAdminGuard],
+        // beforeEnter: [isAdminGuard],
         name: 'techs-details',
         component: () => import('../views/admin/TechDetailsView.vue'),
 
@@ -93,7 +93,7 @@ const routes = [
       },
       {
         path: '/clientes/:id',
-        beforeEnter: [isAdminGuard],
+        // beforeEnter: [isAdminGuard],
         name: 'clients-details',
         component: () => import('../views/admin/ClientsDetailsView.vue'),
 
