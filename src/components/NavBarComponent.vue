@@ -212,6 +212,11 @@ const mobileMenuOpen = ref(false);
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
+              <div
+               
+               class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+               >Hola {{ name }}</div
+             >
               
               <router-link  v-if=" getRole() === 'ROLE_ADMIN' || getRole() === 'ROLE_MODERATOR' "  @click="mobileMenuOpen = false"
               :to="{name: 'services'}"
@@ -225,17 +230,13 @@ const mobileMenuOpen = ref(false);
                 class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Técnicos</router-link
               >
-              <router-linkr v-if=" getRole() === 'ROLE_ADMIN' || getRole() === 'ROLE_MODERATOR' " @click="mobileMenuOpen = false"
+              <router-link v-if=" getRole() === 'ROLE_ADMIN' || getRole() === 'ROLE_MODERATOR' " @click="mobileMenuOpen = false"
               :to="{name: 'clients'}"
                 
                 class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >Clientes</router-linkr
+                >Clientes</router-link  
               >
-              <div
-               
-                class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >{{ name }}</div
-              >
+             
               <div
               @click="clearSession"
 

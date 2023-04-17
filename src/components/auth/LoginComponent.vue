@@ -107,12 +107,14 @@ const sendLogin = async () => {
     const res = await apiAuth.post("/login", {
       username: user.value,
       password: password.value,
-    });
-    const { token, username, email, roles } = res.data;
 
+    });
+    const { token, username, email, roles,id } = res.data;
+
+
+    localStorage.setItem("id", id);
     localStorage.setItem("token", token);
     localStorage.setItem("username", username);
-    localStorage.setItem("email", email);
     localStorage.setItem("roles", roles);
 
     if (res.status === 200) {
