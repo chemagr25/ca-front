@@ -140,7 +140,7 @@ const mobileMenuOpen = ref(false);
             leave-to-class="transform opacity-0 scale-95"
           >
             <MenuItems
-              class="absolute rounded-xl px-1.5 py-3 right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              class="absolute  px-1.5  right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             >
               <MenuItem class="divide-y divide-dashed">
                 <p class="text-xs text-bold text-center">{{ name }}</p>
@@ -212,41 +212,36 @@ const mobileMenuOpen = ref(false);
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-              <Disclosure as="div" class="-mx-3" v-slot="{ open }">
-                <DisclosureButton
-                  class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50"
-                >
-                  Servicios
-                  <ChevronDownIcon
-                    :class="[open ? 'rotate-180' : '', 'h-5 w-5 flex-none']"
-                    aria-hidden="true"
-                  />
-                </DisclosureButton>
-                <DisclosurePanel class="mt-2 space-y-2">
-                  <DisclosureButton
-                    v-for="item in [...ServiceActions, ...callsToAction]"
-                    :key="item.name"
-                    as="a"
-                    :href="item.href"
-                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >{{ item.name }}</DisclosureButton
-                  >
-                </DisclosurePanel>
-              </Disclosure>
-              <a
-                href="#"
+              
+              <router-link @click="mobileMenuOpen = false"
+              :to="{name: 'services'}"
+                
                 class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >Features</a
+                >Servicios</router-link
               >
-              <a
-                href="#"
+              <router-link @click="mobileMenuOpen = false"
+              :to="{name: 'techs'}"
+                
                 class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >Marketplace</a
+                >Técnicos</router-link
               >
-              <a
-                href="#"
+              <router-link @click="mobileMenuOpen = false"
+              :to="{name: 'clients'}"
+                
                 class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >{{ name }}</a
+                >Clientes</router-link
+              >
+              <div
+               
+                class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >{{ name }}</div
+              >
+              <div
+              @click="clearSession"
+
+                href="#"
+                class="-mx-3 block rounded-lg cursor-pointer py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >Cerrar sesión</div
               >
             </div>
           </div>
