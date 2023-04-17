@@ -56,6 +56,12 @@ const ServiceActions = [
     description: "",
     href: "services",
     icon: ClipboardDocumentCheckIcon,
+  },
+  {
+    name: "Ver servicios por tecnico",
+    description: " ",
+    href: "techs",
+    icon: WrenchScrewdriverIcon,
   }
 ];
 
@@ -74,6 +80,7 @@ const TechActions = [
     href: "techs",
     icon: WrenchScrewdriverIcon,
   }
+
 ];
 const callsToAction = [];
 const user = {
@@ -151,10 +158,7 @@ const mobileMenuOpen = ref(false);
               >
                 <p
                   class="rounded"
-                  :class="[
-                    active ? 'bg-gray-100' : '',
-                    'block px-4 py-2 text-sm text-gray-700',
-                  ]"
+                 
                 >
                   Cerrar sesión
                 </p>
@@ -163,15 +167,12 @@ const mobileMenuOpen = ref(false);
                 class="divide-y divide-indigo-900"
                 v-for="item in userNavigation"
                 :key="item.name"
-                v-slot="{ active }"
+               
               >
                 <a
                   :href="item.href"
                   class="rounded"
-                  :class="[
-                    active ? 'bg-gray-100' : '',
-                    'block px-4 py-2 text-sm text-gray-700',
-                  ]"
+                
                   >{{ item.name }}</a
                 >
               </MenuItem>
@@ -224,6 +225,7 @@ const mobileMenuOpen = ref(false);
                 class="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Servicios</router-link
               >
+
               <router-link v-if=" getRole() === 'ROLE_ADMIN'" @click="mobileMenuOpen = false"
               :to="{name: 'techs'}"
                 
@@ -239,7 +241,6 @@ const mobileMenuOpen = ref(false);
              
               <div
               @click="clearSession"
-
                 href="#"
                 class="-mx-3 block rounded-lg cursor-pointer py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Cerrar sesión</div

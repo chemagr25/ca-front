@@ -11,7 +11,7 @@ import NavBar from "../../components/NavBarComponent.vue";
   </div>
 
   <div class="w-full main  p-5">
-    <router-view  class=""></router-view>
+    <router-view></router-view>
   </div>
 </template>
    
