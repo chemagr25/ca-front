@@ -41,7 +41,7 @@ const routes = [
   },
   {
     path: '/admin',
-    beforeEnter: [isAdmod],
+    beforeEnter: [loginGuard2],
     redirect: { name: 'root'},
     component: () => import('../layouts/admin/AdminLayout.vue'),
     children: [
@@ -77,14 +77,6 @@ const routes = [
 
       },
       {
-        path: '/servicios/:id',
-        beforeEnter: [loginGuard2],
-        name: 'services-details',
-        component: () => import('../views/admin/ServiceDatailsView.vue'),
-
-
-      },
-      {
         path: '/tecnicos/:id',
         beforeEnter: [isAdmod],
         name: 'techs-details',
@@ -97,6 +89,14 @@ const routes = [
         beforeEnter: [loginGuard2],
         name: 'clients-details',
         component: () => import('../views/admin/ClientsDetailsView.vue'),
+
+
+      },
+      {
+        path: '/servicios/:id',
+        beforeEnter: [loginGuard2],
+        name: 'services-details',
+        component: () => import('../views/admin/ServiceDatailsView.vue'),
 
 
       },
