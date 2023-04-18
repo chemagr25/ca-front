@@ -32,7 +32,7 @@ export default {
         
     
       } catch (e) {
-        if (e.response.status === 401) {
+        if (e.response.status === 401 || e.response.status === 403) {
           localStorage.clear();
           location.reload();
           return;
@@ -87,7 +87,7 @@ export default {
               <p>{{ service.folio ? service.folio : 'CA000000000' }}</p>
             </div>
             <div>
-              <p>Técnico</p>
+              <p>Estado</p>
               <p>{{ service.status }}</p>
             </div>
 
