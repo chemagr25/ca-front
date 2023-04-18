@@ -9,10 +9,7 @@
                 <v-text-field clearable persistent-hint hint="Nombres del técnico" class="shadow bg-gray-100 pb-2 rounded"
                     :rules="nameRules" v-model="name" label="Nombre(s)"></v-text-field>
             </v-col>
-            <v-col cols="12" sm="6" >
-                <v-text-field type="password" clearable persistent-hint hint="Nombres del técnico" class="shadow bg-gray-100 pb-2 rounded"
-                    :rules="nameRules" v-model="password" label="password"></v-text-field>
-            </v-col>
+          
             <v-col cols="12" sm="6" >
                 <v-text-field clearable persistent-hint hint="Apellidos del técnico"
                 :rules="nameRules" class="shadow bg-gray-100  pb-2 rounded" v-model="lastName" label="Apellidos"></v-text-field>
