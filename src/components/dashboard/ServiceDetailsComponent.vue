@@ -8,17 +8,20 @@ import Valoration from "../ValorationComponent.vue";
 import Loader from "../LoaderComponent.vue";
 import Rate from "./RateComponent.vue";
 import ValorationComponent from "../ValorationComponent.vue";
+import DialogComments from "./DialogCommentsComponent.vue";
+import DialogCommentsComponent from "./DialogCommentsComponent.vue";
 
 export default {
   props: {
     idService: null,
   },
-  components: { Loader, Valoration, ValorationComponent },
+  components: { Loader, Valoration, ValorationComponent, DialogComments, DialogCommentsComponent },
 
   setup(props) {
     //reactive data
     const service = ref(null);
     const img = ref(null);
+    const comments = ref(null)
 
     const getService = async () => {
       try {
@@ -29,6 +32,10 @@ export default {
         });
         service.value = resp.data;
         img.value = resp.data.comments[0].pathFile
+        comments.value = resp.data.comments
+
+        // console.log({{}});
+        
         
     
       } catch (e) {
@@ -59,7 +66,7 @@ export default {
     };
 
 
-    return { service, capitalize, getColor,img };
+    return { service, capitalize, getColor,img,comments };
   },
 };
 </script>
@@ -132,7 +139,8 @@ export default {
           <div class=" bg-gray-50 mt-2  flex flex-col md:flex-row-reverse items-center justify-between rounded-lg">
 
             <div class="  w-full flex mt-3 md:mt-1 justify-center md:justify-end">
-              <button class="btn btn-sm bg-indigo-900">Ver comentarios </button>
+              <DialogCommentsComponent :items="comments"></DialogCommentsComponent>
+              <!-- <button class="btn btn-sm bg-indigo-900">Ver comentarios </button> -->
             </div>
 
             <div class="val w-1/2 ">

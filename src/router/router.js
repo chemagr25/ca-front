@@ -4,6 +4,12 @@ import {  loginGuard,roleGuard,isAdminGuard,isUserGuard,isTechGuard,isAdmod,logi
 
 const routes = [
   {
+    path: '/buscarFolio',
+    name: 'folio-search',
+    component: () => import('../views/FolioSearchView.vue')
+
+  },
+  {
     path: '/',
     redirect: { name: 'login' }
 
@@ -45,6 +51,7 @@ const routes = [
     redirect: { name: 'root'},
     component: () => import('../layouts/admin/AdminLayout.vue'),
     children: [
+
       {
         path: 'dashboard',
         beforeEnter: [isAdminGuard],
