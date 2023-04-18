@@ -24,8 +24,6 @@ export default {
       page.value = n -1
       allServices.value = null
       await setServices()
-
-      
       
     }
 
@@ -40,7 +38,7 @@ export default {
     })
         allServices.value = services.data.content;
 
-        console.log(services);
+       
         
 
 

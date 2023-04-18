@@ -161,6 +161,8 @@ export default {
       </div>
 
       <div class=" -mt-8 cards-mobile flex flex-col wi sm:hidden">
+        <div class="w-full justify-center text-lg font-bold flex mt-8  " v-if="items.length < 1 "> <p>No hay más datos</p></div>
+
         <div v-for="(item, index) in items" :key="index">
           <div class="cards  px-4 py-2 w-full mt-6 flex flex-col bg-white rounded-lg shadow-lg">
             <div class="flex  w-full justify-between flex-row">
