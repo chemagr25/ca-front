@@ -33,11 +33,14 @@ export default {
       if (status === 'RECIBIDO') {
         return 'Recibido'
       }
-      if (status === 'EN_PROCESO') {
-        return 'En proceso'
+      if (status === 'REVISION') {
+        return 'En revisión'
       }
-      if (status === 'FINISHED') {
-        return 'Finalizado'
+      if (status === 'CANCELADO') {
+        return 'Cancelado'
+      }
+      if (status === 'PROCESO') {
+        return 'En proceso'
       }
 
     }
@@ -46,11 +49,11 @@ export default {
       if (status === 'RECIBIDO') {
         return 'badge-success'
       }
-      if (status === 'EN_PROCESO') {
+      if (status === 'REVISION') {
         return 'badge-warning'
       }
-      if (status === 'FINISHED') {
-        return 'badge-success'
+      if (status === 'CANCELADO') {
+        return 'badge-error'
       }
     }
 
