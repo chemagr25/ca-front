@@ -56,12 +56,6 @@ const ServiceActions = [
     description: "",
     href: "services",
     icon: ClipboardDocumentCheckIcon,
-  },
-  {
-    name: "Ver servicios por tecnico",
-    description: " ",
-    href: "techs",
-    icon: WrenchScrewdriverIcon,
   }
 ];
 

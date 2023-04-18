@@ -63,27 +63,57 @@ export default {
 
   <div v-if="!tech" class=" flex  justify-center"> <Loader></Loader> </div>
   <div v-else class=" w-full   flex flex-col items-center  rounded-lg">
-    <div class="w-full bg-white rounded-lg  main-cont  flex col">
-      <div class="cont flex flex-col">
-        <p>{{ tech.id }}</p>
-        <p>{{ tech }}</p>
-       
+    <div class="w-full  rounded-lg  main-cont  flex justify-center">
+      <div class="cont flex p-2 w-full items-center  flex-col">
+        <div class="col flex flex-row  md:w-1/2 shadow-lg pl-3 pt-3   rounded-lg bg-gray-50">
+          <div class="id flex flex-col  w-full ">
+            <div class="flex justify-around">
+              <div class="info">
+                <p class="text-xl">ID</p>
+                <p>#{{ tech.id }}</p>
+              </div>
+              <div class="info">
+                <p class="text-xl">Teléfono</p>
+                <p class="">
+                  {{ tech.phone }}
+                </p>
+              </div>
+            </div>
+            <div class="flex mt-3 justify-around">
+              <div class="info">
+                <p class="text-xl">Nombre</p>
+                <p class="capitalize">
+                  {{ tech.name + ' ' + tech.lastName }}
+                </p>
+              </div>
+              <div class="info">
+                <p class="text-xl">Correo</p>
+                <p class="">
+                  {{ tech.phone }}
+                </p>
+              </div>
+              <div class="info">
+                <p class="text-xl">Username</p>
+                <p class="">
+                  {{ tech.username }}
+                </p>
+              </div>
+            </div>
+            <p class="ml-3 mt-3">Servicios</p>
+            <div class=" justify-center flex flex-wrap">
 
+              <router-link v-for="service in tech.services" class=" m-3 bg-white  p-4 rounded-lg shadow-sm"
+                :to="{ name: 'services-details', params: { id: service.id } }">
+
+                {{ service.folio ? service.folio : 'NO hay folio' }}
+                <!-- {{ service.description ? service.description : 'NO hay folio' }} -->
+
+              </router-link>
+            </div>
+          </div>
+        </div>
       </div>
-
-
     </div>
-   
-
-
-
-
-
-
-
-
-  
-
   </div>
 </template>
 
