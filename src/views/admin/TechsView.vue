@@ -18,21 +18,16 @@ export default {
   setup() {
     const allTechs = ref(null);
 
-
-
     const setTechs = async () => {
 
       try {
         const techs = await getAllTechs();
         
         allTechs.value = techs.data.content;
-        console.log(techs.data);
-     
-
-
+   
       }catch (e){
-        // localStorage.clear()
-        // window.location.reload()
+        localStorage.clear()
+        window.location.reload()
       }
      
 

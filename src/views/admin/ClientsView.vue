@@ -26,13 +26,10 @@ export default {
         const clients = await getAllClients();
         
         allClients.value = clients.data.content;
-        console.log(clients.data);
-     
-
 
       }catch (e){
-        // localStorage.clear()
-        // window.location.reload()
+        localStorage.clear()
+        window.location.reload()
       }
      
 

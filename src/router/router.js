@@ -49,6 +49,7 @@ const routes = [
         path: 'dashboard',
         beforeEnter: [isAdminGuard],
         name: 'root',
+        redirect: { name: 'services'},
         component: () => import('../views/admin/AdminDashboard.vue')
       },
       {
