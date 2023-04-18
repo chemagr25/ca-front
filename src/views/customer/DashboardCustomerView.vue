@@ -1,3 +1,6 @@
+
+
+
 <template>
 
     <h1 class="font-bold text-xl">Mis  servicios</h1>
@@ -97,31 +100,33 @@ export default {
         const services = ref(null)
 
 
-        const styleBadge = (status) => {
-      if (status === 'RECIBIDO') {
-        return 'badge-success'
-      }
-      if (status === 'EN_PROCESO') {
-        return 'badge-warning'
-      }
-      if (status === 'FINISHED') {
-        return 'badge-success'
-      }
-    }
-
-    const statusFormat = (status) => {
+        const statusFormat = (status) => {
       if (status === 'RECIBIDO') {
         return 'Recibido'
       }
-      if (status === 'EN_PROCESO') {
-        return 'En proceso'
+      if (status === 'REVISION') {
+        return 'En Revisión'
       }
-      if (status === 'FINISHED') {
-        return 'Finalizado'
+      if (status === 'CANCELADO') {
+        return 'Cancelado'
+      }
+      if (status === 'PROCESO') {
+        return 'En proceso'
       }
 
     }
 
+    const styleBadge = (status) => {
+      if (status === 'RECIBIDO') {
+        return 'badge-success'
+      }
+      if (status === 'REVISION') {
+        return 'badge-warning'
+      }
+      if (status === 'CANCELADO') {
+        return 'badge-error'
+      }
+    }
 
         const getServiceByClient = async () => {
             try {
