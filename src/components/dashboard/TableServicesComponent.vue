@@ -119,7 +119,7 @@ export default {
               <td class="border-b text-sm capitalize">
                 <div class="tooltip" :data-tip="item.client.name + ' ' + item.client.lastName">
                   <!-- <div class="info">{{ item.client.name + ' ' + item.client.lastName}} </div> -->
-                  <router-link :to="{ name: 'clients-details', params: { id: item.client.id } }"> {{ item.client.name + '' + 
+                  <router-link :to="{ name: 'clients-details', params: { id: item.client.id } }"> {{ item.client.name + ' ' + 
                   item.client.lastName }}</router-link>
                 </div>
               </td>
