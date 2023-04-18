@@ -18,6 +18,7 @@ export default {
   setup(props) {
     //reactive data
     const service = ref(null);
+    const img = ref(null);
 
     const getService = async () => {
       try {
@@ -27,6 +28,8 @@ export default {
           },
         });
         service.value = resp.data;
+        img.value = resp.data.comments[0].pathFile
+        
     
       } catch (e) {
         if (e.response.status === 401) {
@@ -56,7 +59,7 @@ export default {
     };
 
 
-    return { service, capitalize, getColor };
+    return { service, capitalize, getColor,img };
   },
 };
 </script>
@@ -71,8 +74,8 @@ export default {
       <div class="content w-full  flex flex-col md:flex-row">
 
         <div class="img-cont  h-full md:w-1/2 flex items-center  justify-center md:justify-normal">
-          <div class="first-img h-48  md:h-5/6 w-1/2  rounded-lg bg-gray-200  ">
-
+          <div class="first-img h-48  md:h-5/6 w-1/2  rounded-lg   ">
+            <img :src="img+''" alt="">
 
           </div>
 
@@ -152,4 +155,9 @@ export default {
 
 
 
-<style scoped></style>
+<style scoped>
+img {
+  width: 100%;
+}
+
+</style>
