@@ -51,14 +51,13 @@ export const loginGuard = async (to, from, next) => {
 
 export const loginGuard2 = async (to, from, next) => {
     if (localStorage.getItem('token')) {
-        console.log('pasale');
-        
-        
+
+
+
         next()
         return
     }
-    console.log('block');
-    
+
     next({ name: 'main-log' })
     return
 

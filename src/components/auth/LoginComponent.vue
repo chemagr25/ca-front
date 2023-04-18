@@ -126,7 +126,7 @@ const sendLogin = async () => {
 
     return createToast(
       {
-        title: "Usuario inválido",
+        title: "Usuario no válido",
         description: "Revisa tus credenciales de acceso",
       },
       { type: "danger", timeout: 1500, hideProgressBar: true }

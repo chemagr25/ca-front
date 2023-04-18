@@ -131,6 +131,7 @@ const routes = [
         path: 'dashboard',
         beforeEnter: [isTechGuard],
         name: 'techDashboard',
+        redirect: {name:'services'},
         component: ()=> import('../views/tech/DashboardTechView.vue')
       }
     ]

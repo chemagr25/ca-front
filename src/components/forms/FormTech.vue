@@ -6,30 +6,30 @@
         <v-row class=" mt-4">
           
             <v-col cols="12" sm="6" >
-                <v-text-field persistent-hint hint="Nombres del técnico" class="shadow bg-gray-100 pb-2 rounded"
-                    v-model="name" label="Nombre(s)"></v-text-field>
+                <v-text-field clearable persistent-hint hint="Nombres del técnico" class="shadow bg-gray-100 pb-2 rounded"
+                    v-model="name" :rules="nameRules" label="Nombre(s)"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" >
-                <v-text-field clearable persistent-hint hint="Apellidos del técnico"
-                    class="shadow bg-gray-100  pb-2 rounded" v-model="lastName" label="Apellidos"></v-text-field>
+                <v-text-field clearable  :rules="nameRules" persistent-hint hint="Apellidos del técnico"
+                    class="shadow bg-gray-100   pb-2 rounded" v-model="lastName" label="Apellidos"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" >
 
-                <v-text-field clearable persistent-hint hint="nombre de ususario para iniciar sesión"
-                    class="shadow bg-gray-100  pb-2 rounded" v-model="username" label="Username"></v-text-field>
+                <v-text-field clearable  :rules="usernameRules"  persistent-hint hint="nombre de ususario para iniciar sesión"
+                    class="shadow bg-gray-100  pb-2 rounded"  v-model="username" label="Username"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" >
-                <v-text-field persistent-hint hint="Correo personal" class=" shadow bg-gray-100 pb-2 rounded"
-                    v-model="email" label="e-mail"></v-text-field>
+                <v-text-field clearable persistent-hint hint="Correo personal" class=" shadow bg-gray-100 pb-2 rounded"
+                  :rules="emailRules"  v-model="email" label="e-mail"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" >
-                <v-text-field persistent-hint hint="Contraseña para iniciar sesión" class="shadow bg-gray-100 pb-2 rounded" v-model="password"
+                <v-text-field clearable type="password"   persistent-hint hint="Contraseña para iniciar sesión" class="shadow bg-gray-100 pb-2 rounded" v-model="password"
                     label="Contraseña"></v-text-field>
             </v-col>
 
             
             <v-col cols="12" sm="6" >
-                <v-text-field persistent-hint hint="Número personal" class="shadow bg-gray-100 pb-2 rounded" v-model="phone"
+                <v-text-field clearable :rules="phoneRules" counter="10" persistent-hint hint="Número personal" class="shadow bg-gray-100 pb-2 rounded" v-model="phone"
                     label="Teléfono"></v-text-field>
             </v-col>
 
@@ -38,7 +38,7 @@
         </v-row>
         <div class="buttons flex flex-row-reverse items-center mt-4">
             <div class="w-full flex justify-end ">
-                <button @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar técnico</button>
+                <button :disabled="!form"  @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar técnico</button>
             </div>
             <div class="w-full ">
                 <button @click="$emit('close')" class="btn   bg-indigo-900  capitalize font-normal mt-2">
@@ -155,32 +155,42 @@ export default {
 
 
 
-        // const nameRules = ref([
-        //     value => {
-        //         if (!value) return 'Campo obligatorio'
-        //         if (/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(value)) return true
-        //         return 'Introduce solo letras'
-        //     },
-        // ])
-        // const phoneRules = ref([
-        //     value => {
-        //         if (!value) return 'Campo obligatorio'
-        //         if (/^\d{10}$/.test(value)) return true
-        //         return ''
-        //     },
-        // ])
-        // const emailRules = ref([
-        //     value => {
-        //         if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/.test(value)) return true
+        const nameRules = ref([
+            value => {
+                if (!value) return 'Campo obligatorio'
+                if (/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(value)) return true
+                return 'Introduce solo letras'
+            },
+        ])
+        const usernameRules = ref([
+            value => {
+                if (!value) return 'Campo obligatorio'
+                if (/^\S+$/.test(value)) return true
+                return 'sin espacios'
+            },
+        ])
+        const phoneRules = ref([
+            value => {
+                if (!value) return 'Campo obligatorio'
+                if (/^\d{10}$/.test(value)) return true
+                return 'Numero a 10 digitos'
+            },
+        ])
+        const emailRules = ref([
+            value => {
+                if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/.test(value)) return true
 
-        //         return ''
-        //     },
-        // ])
+                return 'Ingresa un correo valido'
+            },
+        ])
 
 
 
         return {
-
+            phoneRules,
+            emailRules,
+            usernameRules,
+            nameRules,
             form,
             dialog,
             sendData,
