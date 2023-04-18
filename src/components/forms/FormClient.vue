@@ -33,7 +33,7 @@
         </v-row>
         <div class="buttons flex flex-row-reverse items-center mt-4">
             <div class="w-full flex justify-end ">
-                <button @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar cliente</button>
+                <button :disabled="!form" @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar cliente</button>
             </div>
             <div class="w-full ">
                 <button @click="$emit('close')" class="btn   bg-indigo-900  capitalize font-normal mt-2">
