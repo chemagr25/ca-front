@@ -24,7 +24,7 @@ export default {
   props: {
     items: null,
   },
-  emits: ['reload'],
+  emits: ['reload', 'changepage'],
   setup(props, ctx) {
 
 
@@ -102,7 +102,8 @@ export default {
     <div class=" main-cont w-full flex justify-center   md:bg-white  p-5 rounded-lg">
 
       <div class=" hidden sm:block overflow-x-auto w-full cont-table">
-        <table class="table table-zebra w-full">
+        <div class="w-full justify-center text-lg font-bold flex  " v-if="items.length < 1 "> <p>No hay más datos</p></div>
+        <table v-else class="table table-zebra w-full">
           <!-- head -->
           <thead>
             <tr>
@@ -114,8 +115,10 @@ export default {
               <th class="pl-8">Acciones</th>
             </tr>
           </thead>
-          <tbody v-for=" (item, index) in items" :key="index">
 
+      
+          <tbody v-for=" (item, index) in items" :key="index">
+            
             <!-- row 1 -->
             <tr>
               <td class="border-b text-sm capitalize">{{ item.folio ? item.folio : 'CA00000000' }}</td>
@@ -222,11 +225,9 @@ export default {
 
     <div class="pag flex text-black justify-center bg-white maxwi mt-4 rounded-lg p-2 w-full ">
       <div class="btn-group">
-        <button class="mx-1 btn btn-outline border">1</button>
-        <button class="mx-1 btn btn-outline border ">2</button>
-        <button class="mx-1 btn btn-outline border">3</button>
-        <button class="mx-1 btn btn-outline border">4</button>
-
+        <button class="mx-1 btn btn-outline border"  @click="$emit('changepage', 1)">1</button>
+        <button class="mx-1 btn btn-outline border " @click="$emit('changepage', 2)" >2</button>
+   
 
 
       </div>

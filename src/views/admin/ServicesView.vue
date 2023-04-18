@@ -5,6 +5,7 @@ import { ref } from "vue";
 import TableServices from "../../components/dashboard/TableServicesComponent.vue";
 import getAllServices from "../../api/resources/getAllServices";
 import Loader from "../../components/LoaderComponent.vue";
+import apiResources from "../../api/apiResources";
 
 
 export default {
@@ -17,13 +18,30 @@ export default {
 
   setup() {
     const allServices = ref(null);
+    const page = ref(0)
+
+    const getPage = async(n) => {
+      page.value = n -1
+      allServices.value = null
+      await setServices()
+
+      
+      
+    }
 
 
     const setServices = async () => {
 
       try {
-        const services = await getAllServices();
+        const services =  await apiResources.get(`/services/all?pageNumber=${page.value}`,  {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
         allServices.value = services.data.content;
+
+        console.log(services);
+        
 
 
       }catch (e){
@@ -38,7 +56,7 @@ export default {
     setServices()
 
 
-    return { allServices,setServices };
+    return { allServices,setServices,getPage };
   },
 };
 </script>
@@ -49,9 +67,7 @@ export default {
   <div class="main w-full flex flex-col  items-center ">
 
     <Loader v-if="!allServices" />
-    <TableServices @reload="setServices" v-else :items="allServices" />
-
-
+    <TableServices @changepage="getPage"  @reload="setServices" v-else :items="allServices" />
 
   </div>
 </template>
