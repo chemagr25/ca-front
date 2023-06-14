@@ -4,9 +4,15 @@ import {  loginGuard,roleGuard,isAdminGuard,isUserGuard,isTechGuard,isAdmod,logi
 
 const routes = [
   {
-    path: '/buscarFolio',
+    path: '/buscarfolio',
     name: 'folio-search',
     component: () => import('../views/FolioSearchView.vue')
+
+  },
+  {
+    path: '/resetpassword',
+    name: 'restore-password',
+    component: () => import('../views/RestorePasswordView.vue')
 
   },
   {

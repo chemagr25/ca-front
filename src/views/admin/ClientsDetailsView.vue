@@ -14,8 +14,8 @@ export default {
   },
   setup() {
 
-    const service = ref(null)
-    service.value = useRoute().params.id
+    const service = ref( useRoute().params.id) 
+  
     
     return {
       service

@@ -102,7 +102,7 @@ export default {
             <p class="ml-3 mt-3">Servicios</p>
             <div class=" justify-center flex flex-wrap">
 
-              <router-link v-for="service in tech.services" class=" m-3 bg-white  p-4 rounded-lg shadow-sm"
+              <router-link v-for="service in tech.services" :key="service.id" class=" m-3 bg-white  p-4 rounded-lg shadow-sm"
                 :to="{ name: 'services-details', params: { id: service.id } }">
 
                 {{ service.folio ? service.folio : 'NO hay folio' }}
