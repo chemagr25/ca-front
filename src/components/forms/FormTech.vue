@@ -23,7 +23,7 @@
                   :rules="emailRules"  v-model="email" label="e-mail"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" >
-                <v-text-field clearable  :rules="passwordRules" type="password"   persistent-hint hint="Contraseña para iniciar sesión" class="shadow bg-gray-100 pb-2 rounded" v-model="password"
+                <v-text-field clearable type="password"   persistent-hint hint="Contraseña para iniciar sesión" class="shadow bg-gray-100 pb-2 rounded" v-model="password"
                     label="Contraseña"></v-text-field>
             </v-col>
 
@@ -183,14 +183,6 @@ export default {
                 return 'Ingresa un correo valido'
             },
         ])
-        const passwordRules = ref([
-            
-            value => {
-                if (/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value)) return true
-
-                return 'Ingresa contraseña valida'
-            },
-        ])
 
 
 
@@ -198,7 +190,6 @@ export default {
             phoneRules,
             emailRules,
             usernameRules,
-            passwordRules,
             nameRules,
             form,
             dialog,

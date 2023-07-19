@@ -3,18 +3,7 @@ import {  loginGuard,roleGuard,isAdminGuard,isUserGuard,isTechGuard,isAdmod,logi
 
 
 const routes = [
-  {
-    path: '/buscarfolio',
-    name: 'folio-search',
-    component: () => import('../views/FolioSearchView.vue')
 
-  },
-  {
-    path: '/resetpassword',
-    name: 'restore-password',
-    component: () => import('../views/RestorePasswordView.vue')
-
-  },
   {
     path: '/',
     redirect: { name: 'login' }
@@ -57,7 +46,6 @@ const routes = [
     redirect: { name: 'root'},
     component: () => import('../layouts/admin/AdminLayout.vue'),
     children: [
-
       {
         path: 'dashboard',
         beforeEnter: [isAdminGuard],
