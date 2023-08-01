@@ -3,7 +3,6 @@
 import { ref } from "vue";
 import apiResources from "../../api/apiResources";
 import router from "../../router/router";
-
 import Loader from "../LoaderComponent.vue";
 import Rate from "./RateComponent.vue";
 
@@ -106,7 +105,6 @@ export default {
                 :to="{ name: 'services-details', params: { id: service.id } }">
 
                 {{ service.folio ? service.folio : 'NO hay folio' }}
-                <!-- {{ service.description ? service.description : 'NO hay folio' }} -->
 
               </router-link>
             </div>

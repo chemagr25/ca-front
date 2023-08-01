@@ -3,8 +3,8 @@
 import { ref } from "vue";
 
 import TableTechs from "../../components/dashboard/TableTechsComponent.vue";
-import getAllTechs from "../../api/resources/getAllTechs";
 import Loader from "../../components/LoaderComponent.vue";
+import apiResources from "../../api/apiResources";
 
 
 export default {
@@ -17,15 +17,32 @@ export default {
 
   setup() {
     const allTechs = ref(null);
+    const totalPages = ref()
+    const page = ref(0)
+
+    const getPage = async(n) => {
+      page.value = n -1
+      allTechs.value = null
+      await setTechs()
+      
+    }
+
 
     const setTechs = async () => {
 
       try {
-        const techs = await getAllTechs();
-        
+        const techs = await apiResources.get(`/technicians/all?pageNumber=${page.value}`,{
+            
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    
+        })
+        totalPages.value =  techs.data.totalPages
         allTechs.value = techs.data.content;
    
       }catch (e){
+        console.log(e)
         localStorage.clear()
         window.location.reload()
       }
@@ -39,7 +56,7 @@ export default {
     
 
 
-    return { allTechs,setTechs };
+    return { allTechs,setTechs, totalPages, getPage };
   },
 };
 </script>
@@ -50,7 +67,7 @@ export default {
   <div class="main w-full flex flex-col  items-center ">
 
     <Loader v-if="!allTechs" />
-    <TableTechs @reload="setTechs" v-else :items="allTechs" />
+    <TableTechs @reload="setTechs" v-else  @changepage="getPage"  :totalPages="totalPages" :items="allTechs" />
 
 
 

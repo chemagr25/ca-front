@@ -1,5 +1,5 @@
 <template>
-  <div class="spinner"></div>
+  <div class=" absolute mt-28 spinner"></div>
 </template>
 
 

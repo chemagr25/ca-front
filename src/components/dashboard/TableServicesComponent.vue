@@ -23,12 +23,10 @@ export default {
   },
   props: {
     items: null,
+    totalPages: 0,
   },
   emits: ['reload', 'changepage'],
   setup(props, ctx) {
-
-
-
     const statusFormat = (status) => {
       if (status === 'RECIBIDO') {
         return 'Recibido'
@@ -59,8 +57,8 @@ export default {
 
     const pop = () => {
       ctx.emit('reload')
-
     }
+
     return {
       statusFormat,
       styleBadge,
@@ -76,7 +74,7 @@ export default {
 
 
 <template>
-  <div class="filters-search-add w-full maxwi mb-3 p-2 bg-white rounded-lg">
+  <div class="filters-search-add w-full maxwi mb-3 p-2 rounded-lg">
     <div class="main px-3 w-full flex items-center justify-between">
       <div class="add-service w-1/6 md:w-1/2 gap-1  ">
         <Dialog @reload-table="pop" />
@@ -84,16 +82,13 @@ export default {
 
       <div class=" w-5/6 md:w-1/4  flex items-center ">
         <div class="dropdown ml-auto">
-          <label tabindex="0" class="btn border-none bg-white m-1">
-            <FunnelIcon class="text-black w-7 " />
-          </label>
+       
           <ul tabindex="0" class="dropdown-content  menu p-2 shadow bg-white rounded-box w-52">
             <p class="hover:bg-gray-100 px-3 py-1 rounded">Recibido</p>
             <p class="hover:bg-gray-100 px-3 py-1 rounded">En proceso</p>
             <p class="hover:bg-gray-100 px-3 py-1 rounded">Cancelado</p>
           </ul>
         </div>
-        <input type="text" placeholder="Buscar" class="input bg-gray-100 input-bordered input-sm h-12 w-full " />
       </div>
 
     </div>
@@ -227,11 +222,7 @@ export default {
 
     <div class="pag flex text-black justify-center bg-white maxwi mt-4 rounded-lg p-2 w-full ">
       <div class="btn-group">
-        <button class="mx-1 btn btn-outline border"  @click="$emit('changepage', 1)">1</button>
-        <button class="mx-1 btn btn-outline border " @click="$emit('changepage', 2)" >2</button>
-   
-
-
+        <button v-for="(item) in totalPages" class="mx-1 btn btn-outline border"  @click="$emit('changepage', item  )">{{  item }} </button>
       </div>
     </div>
 
