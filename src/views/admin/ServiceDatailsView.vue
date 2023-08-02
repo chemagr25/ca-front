@@ -1,16 +1,14 @@
 <script >
 
+import { ref } from "vue";
+import { useRoute } from "vue-router";
 import ServiceDetailsComponent from "../../components/dashboard/ServiceDetailsComponent.vue";
 import Loader from "../../components/LoaderComponent.vue";
-import { ref } from "vue";
-
-import { useRoute } from "vue-router";
 
 export default {
   components: {
     ServiceDetailsComponent,
     Loader
-
   },
   setup() {
 
