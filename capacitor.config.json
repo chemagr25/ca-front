@@ -1,0 +1,9 @@
+{
+  "appId": "com.compuapp.com",
+  "appName": "compuapp",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+ 
+  }
+}

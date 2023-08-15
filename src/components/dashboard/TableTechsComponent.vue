@@ -182,12 +182,12 @@ export default {
       </div>
     <div class="pag flex text-black justify-center bg-white maxwi mt-4 rounded-lg p-2 w-full ">
       <div class="btn-group">
-        <button v-for="(item) in totalPages" class="mx-1 btn btn-outline border"  @click="$emit('changepage', item  )">{{  item }} </button>
+        <button v-for="(item) in totalPages" class="mx-1 btn  btn-outline border"   @click="$emit('changepage', item  )">{{  item }} </button>
       </div>
     </div>
 
   </div>
-</template>
+</template>   
 
 <style scoped>
 .img-item {
@@ -212,6 +212,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 
 
 </style>
