@@ -11,7 +11,6 @@ export default {
     Loader
   },
   setup() {
-
     const service = ref(null)
     service.value = useRoute().params.id
     
@@ -24,12 +23,9 @@ export default {
 
 <template >
   <div class="w-full flex-col flex justify-center items-center h-full">
-    <!-- <Loader  class="hidden"/> -->
 
     <div  class="cont-main w-full rounded-lg">
       <ServiceDetailsComponent :idService="service"/>
-      
-
    
     </div>
   </div>

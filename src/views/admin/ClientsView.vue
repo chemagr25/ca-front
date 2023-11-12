@@ -26,26 +26,24 @@ export default {
       await setClients()
     }
 
-
-
-
     const setClients = async () => {
-
       try {
-        const clients = await await apiResources.get(`/clients/all?pageNumber=${page.value}`,  {
+        const clients = await apiResources.get(`/clients?pageSize=10&pageNumber=${page.value}&sortBy=id`,  {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
     })
       totalPages.value = clients.data.totalPages
         allClients.value = clients.data.content;
+
+
+        console.log(allClients.value)
       }catch (e){
         console.log(e)
         localStorage.clear()
         window.location.reload()
       }
-     
-
+    
     };
 
 

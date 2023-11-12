@@ -9,7 +9,7 @@
         <h1
           class=" text-center text-3xl font-bold tracking-tight text-gray-900"
         >
-          CompuActual 
+          CompuActual
         </h1>
         <h2
           class="mt-6 text-center text-3xl font-600 tracking-tight text-gray-900"
@@ -109,16 +109,19 @@ const sendLogin = async () => {
       password: password.value,
 
     });
+
+    console.log(res)
     const { token, username, email, roles,id } = res.data;
 
-
     localStorage.setItem("id", id);
+
+   
     localStorage.setItem("token", token);
-    localStorage.setItem("username", username);
-    localStorage.setItem("roles", roles);
+    // localStorage.setItem("username", username);
+    localStorage.setItem("roles", roles[0]);
 
     if (res.status === 200) {
-      // return router.push({name: 'main-log'})
+      return router.push({name: 'main-log'})
       return nextPage();
     }
   } catch (e) {

@@ -34,11 +34,6 @@ export const isAdmod = async (to, from, next) => {
 }
 
 
-
-
-
-
-
 export const loginGuard = async (to, from, next) => {
     if (!localStorage.getItem('token')) {
         next()

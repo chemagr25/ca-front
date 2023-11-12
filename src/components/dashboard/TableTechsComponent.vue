@@ -128,7 +128,6 @@ export default {
               </td>
              
               <td class="border-b  text-sm capitalize ">
-                <!-- <div class="info"> {{ item.technicians.name }} maria GArcia Ramirez GArcia Ramirez</div> -->
                 <div class="tooltip" :data-tip="'hola'">
                   <div class="info">{{ item.phone }} </div>
                 </div>
@@ -182,7 +181,7 @@ export default {
       </div>
     <div class="pag flex text-black justify-center bg-white maxwi mt-4 rounded-lg p-2 w-full ">
       <div class="btn-group">
-        <button v-for="(item) in totalPages" class="mx-1 btn  btn-outline border"   @click="$emit('changepage', item  )">{{  item }} </button>
+        <button v-for="(item) in totalPages" class="mx-1 btn  btn-outline border"   @click="$emit('changepage', item  )">{{  item }} {{ totalPages }} </button>
       </div>
     </div>
 

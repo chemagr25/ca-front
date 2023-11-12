@@ -104,7 +104,7 @@ export default {
               <router-link v-for="service in tech.services" :key="service.id" class=" m-3 bg-white  p-4 rounded-lg shadow-sm"
                 :to="{ name: 'services-details', params: { id: service.id } }">
 
-                {{ service.folio ? service.folio : 'NO hay folio' }}
+                {{ service.invoice || 'NO hay folio' }}
 
               </router-link>
             </div>

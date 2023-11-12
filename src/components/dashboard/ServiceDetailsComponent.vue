@@ -26,11 +26,17 @@ export default {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         });
+
+        console.log(resp.data)
         service.value = resp.data;
         comments.value = resp.data.comments
-        resp.data.comments.sort((a, b) => {
-          return console.log(a.id > b.id)
-        })
+
+        console.log(comments.value)
+
+
+        // resp.data.comments.sort((a, b) => {
+        //   return console.log(a.id > b.id)
+        // })
 
 
 
@@ -80,7 +86,7 @@ export default {
     const sendComment = async () => {
 
       try {
-        await apiResources.post(`/services/${service.value.id}/comment/${localStorage.getItem('id')}`, {
+        await apiResources.post(`/services/${service.value.id}/addComment/${localStorage.getItem('id')}`, {
           comment: inputComment.value
         },
           {
@@ -101,8 +107,6 @@ export default {
       }
 
     }
-
-
 
     const sendNotification = async (service) => {
 
@@ -142,9 +146,8 @@ try {
 
     const changeStatus = async (newStatus) => {
 
-
       try {
-        await apiResources.patch(`/services/update/${service.value.id}`, {
+        await apiResources.patch(`/services/${service.value.id}`, {
         status: newStatus
       }, {
         headers: {
@@ -181,11 +184,11 @@ try {
       <div class=" basis-1/3  gap-1 flex flex-col ">
         <p class="self-center font-bold">Servicio</p>
         <p class="font-bold">Folio</p>
-        <p>{{ service.folio }}</p>
+        <p>{{ service.invoice }}</p>
         <p class="font-bold">Fecha</p>
         <p>{{ service.dateReceived }}</p>
         <p class="font-bold">Técnico</p>
-        <p>{{ service.technicians.name }} {{ service.technicians.lastName }}</p>
+        <p>{{ service.technician.name }} {{ service.technician.lastName }}</p>
         <p class="font-bold">Estatus</p>
         <div class="dropdown dropdown-bottom">
           <label tabindex="0" class=" cursor-pointer">{{ service.status }}</label>
@@ -199,9 +202,9 @@ try {
         <p class="self-center font-bold">Dispositivo</p>
 
         <p class="font-bold">Marca</p>
-        <p>{{ service.devices[0].brand }}</p>
+        <p>{{ service.device.brand }}</p>
         <p class="font-bold">Modelo</p>
-        <p>{{ service.devices[0].model }}</p>
+        <p>{{ service.device.model }}</p>
         <p class="font-bold">Descripción</p>
         <p>{{ service.description }}</p>
         <p class="font-bold">Observaciones</p>
@@ -232,15 +235,13 @@ try {
           <v-divider></v-divider>
           <v-card-text style="height: 300px;x">
             <div v-for="comment in comments" :key="comment.id" class="bg-accent/20 p-5 m-2 w-1/2  rounded-lg shadow-lg"
-              :class="[comment.user.roles[0].name == 'ROLE_MODERATOR' ? 'ml-auto' : '']">
+              :class="[comment.user.role == 'ROLE_MODERATOR' ? 'ml-auto' : '']">
               <p class="font-bold mb-2">{{ comment.user.name }} <span class="text-xs font-normal">{{
-                comment.user.roles[0].name === 'ROLE_MODERATOR' || comment.user.roles[0].name === 'ROLE_ADMIN' ?
+                comment.user.role === 'ROLE_MODERATOR' || comment.user.role === 'ROLE_ADMIN' ?
                 '(Técnico)' : 'Cliente' }}</span></p>
               <p class="mt-2"> {{ comment.comment }}</p>
               <img :src="comment?.photoUrl" alt="" class="w-40 rounded ">
             </div>
-
-
           </v-card-text>
 
           <form @submit.prevent>

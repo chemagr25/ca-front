@@ -13,10 +13,7 @@ export default {
 
   },
   setup() {
-
     const service = ref( useRoute().params.id) 
-  
-    
     return {
       service
     }
@@ -26,13 +23,8 @@ export default {
 
 <template >
   <div class="w-full flex-col flex justify-center items-center h-full">
-    <!-- <Loader  class="hidden"/> -->
-
     <div  class="cont-main w-full rounded-lg">
       <ClientsDetailsComponent :idService="service"/>
-      
-
-   
     </div>
   </div>
 </template>

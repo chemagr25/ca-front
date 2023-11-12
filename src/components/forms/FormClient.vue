@@ -4,29 +4,29 @@
             <p class="font-bold  text-lg">Agregar cliente</p>
         </div>
         <v-row class=" mt-4">
-          
-            <v-col cols="12" sm="6" >
+
+            <v-col cols="12" sm="6">
                 <v-text-field clearable persistent-hint hint="Nombres del técnico" class="shadow bg-gray-100 pb-2 rounded"
                     :rules="nameRules" v-model="name" label="Nombre(s)"></v-text-field>
             </v-col>
-          
-            <v-col cols="12" sm="6" >
-                <v-text-field clearable persistent-hint hint="Apellidos del técnico"
-                :rules="nameRules" class="shadow bg-gray-100  pb-2 rounded" v-model="lastName" label="Apellidos"></v-text-field>
-            </v-col>
-            <v-col cols="12" sm="6" >
 
-                <v-text-field clearable persistent-hint hint="nombre de ususario para iniciar sesión"
-                  :rules="usernameRules"  class="shadow bg-gray-100  pb-2 rounded" v-model="username" label="Username"></v-text-field>
+            <v-col cols="12" sm="6">
+                <v-text-field clearable persistent-hint hint="Apellidos del técnico" :rules="nameRules"
+                    class="shadow bg-gray-100  pb-2 rounded" v-model="lastName" label="Apellidos"></v-text-field>
             </v-col>
-            <v-col cols="12" sm="6" >
+            <v-col cols="12" sm="6">
+
+                <v-text-field clearable persistent-hint hint="nombre de ususario para iniciar sesión" :rules="usernameRules"
+                    class="shadow bg-gray-100  pb-2 rounded" v-model="username" label="Username"></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="6">
                 <v-text-field clearable persistent-hint hint="Correo personal" class=" shadow bg-gray-100 pb-2 rounded"
-                   :rules="emailRules" v-model="email" label="e-mail"></v-text-field>
+                    :rules="emailRules" v-model="email" label="e-mail"></v-text-field>
             </v-col>
-        
-            <v-col cols="12" sm="6" >
-                <v-text-field clearable persistent-hint hint="Número personal" class="shadow bg-gray-100 pb-2 rounded" v-model="phone"
-                   :rules="phoneRules" counter="10" label="Teléfono"></v-text-field>
+
+            <v-col cols="12" sm="6">
+                <v-text-field clearable persistent-hint hint="Número personal" class="shadow bg-gray-100 pb-2 rounded"
+                    v-model="phone" :rules="phoneRules" counter="10" label="Teléfono"></v-text-field>
             </v-col>
 
 
@@ -34,7 +34,8 @@
         </v-row>
         <div class="buttons flex flex-row-reverse items-center mt-4">
             <div class="w-full flex justify-end ">
-                <button :disabled="!form" @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar cliente</button>
+                <button :disabled="!form" @click="sendData" class="btn  bg-indigo-900  capitalize font-normal mt-2">Agregar
+                    cliente</button>
             </div>
             <div class="w-full ">
                 <button @click="$emit('close')" class="btn   bg-indigo-900  capitalize font-normal mt-2">
@@ -56,14 +57,11 @@
 
 
 <script>
-import { ref, watch, watchEffect } from 'vue'
-import { filterClients, filterTechnicians } from '../../api/resources/getFilterNameClients'
+import { ref } from 'vue'
 
 import {
     DocumentPlusIcon,
 } from "@heroicons/vue/24/outline";
-import apiResources from '../../api/apiResources';
-import swal from 'sweetalert';
 import { createToast } from "mosha-vue-toastify";
 import apiAuth from '../../api/apiAuth';
 
@@ -86,10 +84,6 @@ export default {
         const lastName = ref(null)
         const phone = ref(null)
 
-
-
-
-
         const setService = () => {
             return {
                 "username": username.value,
@@ -106,13 +100,9 @@ export default {
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('token')
                     }
-                }
-                )
+                })
                 createToast(
-                    {
-                        title: "Éxito",
-                        description: "Usuario",
-                    },
+                    { title: "Éxito", description: "Usuario", },
                     { type: "success", timeout: 1500, hideProgressBar: true }
                 );
                 ctx.emit('newData')
@@ -193,7 +183,7 @@ export default {
             dialog,
             username,
             email,
-         
+
             name,
             lastName,
             phone,

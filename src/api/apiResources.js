@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiResources = axios.create( {
-    baseURL: 'https://compuactual.azurewebsites.net/api'
+    baseURL: 'https://guero-pendejo.azurewebsites.net/api'
 })
 
 

@@ -26,26 +26,27 @@ export default {
 
     const setServices = async () => {
       try {
-        const services =  await apiResources.get(`/services/all?pageNumber=${page.value}`,  {
+        const services =  await apiResources.get(`/services?pageSize=10&pageNumber=${page.value}&sortBy=id`,  {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
     })
+
         
         allServices.value = services.data.content;
         totalPages.value = services.data.totalPages
 
-      }catch (e){
-        localStorage.clear()
-        window.location.reload()
-      }
-     
 
+
+      }catch (e){
+        // localStorage.clear()
+        // window.location.reload()
+      }
+  
     };
 
 
     setServices()
-
 
     return { allServices,setServices,getPage, totalPages };
   },
@@ -59,6 +60,5 @@ export default {
 
     <Loader v-if="!allServices" />
     <TableServices v-else :totalPages="totalPages" @changepage="getPage"  @reload="setServices"  :items="allServices" />
-
   </div>
 </template>

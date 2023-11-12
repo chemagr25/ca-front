@@ -5,36 +5,37 @@
         </div>
         <v-row class=" mt-4">
             <v-col cols="12" sm="6" md="4">
-                <v-text-field clearable  persistent-hint hint="Marca del dispositivo"
-                    class="shadow bg-gray-100  pb-2 rounded" :rules="brandRules" v-model="brand" label="Marca"></v-text-field>
+                <v-text-field clearable persistent-hint hint="Marca del dispositivo"
+                    class="shadow bg-gray-100  pb-2 rounded" :rules="brandRules" v-model="brand"
+                    label="Marca"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
-                <v-text-field clearable persistent-hint hint="Modelo del dispositivo" :rules="brandRules" class=" shadow bg-gray-100 pb-2 rounded"
-                    v-model="model" label="Modelo"></v-text-field>
+                <v-text-field clearable persistent-hint hint="Modelo del dispositivo" :rules="brandRules"
+                    class=" shadow bg-gray-100 pb-2 rounded" v-model="model" label="Modelo"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
-                <v-text-field clearable persistent-hint hint="S/N" :rules="brandRules" class="shadow bg-gray-100 pb-2 rounded" v-model="serialNumber"
-                    label="Numero de serie"></v-text-field>
+                <v-text-field clearable persistent-hint hint="S/N" :rules="brandRules"
+                    class="shadow bg-gray-100 pb-2 rounded" v-model="serialNumber" label="Numero de serie"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
-                <v-text-field clearable persistent-hint hint="Marca y modelo del procesador"  :rules="brandRules" class="shadow bg-gray-100 pb-2 rounded"
-                    v-model="processor" label="Procesador"></v-text-field>
+                <v-text-field clearable persistent-hint hint="Marca y modelo del procesador" :rules="brandRules"
+                    class="shadow bg-gray-100 pb-2 rounded" v-model="processor" label="Procesador"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
-                <v-text-field clearable persistent-hint hint="En GB" :rules="numRules" class="shadow bg-gray-100 pb-2 rounded" v-model="ram"
-                    label="RAM"></v-text-field>
+                <v-text-field clearable persistent-hint hint="En GB" :rules="numRules"
+                    class="shadow bg-gray-100 pb-2 rounded" v-model="ram" label="RAM"></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
-                <v-text-field clearable persistent-hint hint="En GB" :rules="numRules" class="shadow bg-gray-100 pb-2 rounded" v-model="storage"
-                    label="Almacenamiento"></v-text-field>
+                <v-text-field clearable persistent-hint hint="En GB" :rules="numRules"
+                    class="shadow bg-gray-100 pb-2 rounded" v-model="storage" label="Almacenamiento"></v-text-field>
             </v-col>
             <v-col cols="12">
                 <v-textarea clearable no-resize persistent-hint hint="Pantalla rota, etc... " class="shadow bg-gray-100"
                     v-model="observations" :rules="brandRules" label="Observaciones del dispositivo"></v-textarea>
             </v-col>
             <v-col cols="12" sm="6">
-                <v-text-field clearable persistent-hint hint="Elegir cliente " v-model="client" class="shadow rounded bg-gray-100"
-                    label="Cliente"></v-text-field>
+                <v-text-field clearable persistent-hint hint="Elegir cliente " v-model="client"
+                    class="shadow rounded bg-gray-100" label="Cliente"></v-text-field>
                 <div v-if="clientsSuggestions && clientsSuggestions.length > 0"
                     class="inset w-full mt-2 rounded  border shadow-xl px-3 bg-white p-2">
                     <div v-for="item in clientsSuggestions " :key="item.id">
@@ -47,8 +48,8 @@
             </v-col>
 
             <v-col cols="12" sm="6">
-                <v-text-field clearable persistent-hint hint="Elegir técnico" v-model="technician" class="shadow rounded bg-gray-100"
-                    label="Tecnico"></v-text-field>
+                <v-text-field clearable persistent-hint hint="Elegir técnico" v-model="technician"
+                    class="shadow rounded bg-gray-100" label="Tecnico"></v-text-field>
                 <div v-if="items && items.length > 0" class="inset w-full mt-2 rounded  border shadow-xl px-3 bg-white p-2">
                     <div v-for="item in items " :key="item.id">
                         <p @click="selectTech(item.name + ' ' + item.lastName, item.id)" class="border-b py-1 ">{{ item.name
@@ -59,24 +60,26 @@
                 </div>
             </v-col>
             <v-col cols="12">
-                <v-textarea clearable :rules="brandRules" no-resize v-model="description" heigth="5" persistent-hint class="shadow rounded bg-gray-100"
-                    hint="Decripcion del servicio" label="Descripción del servicio"></v-textarea>
+                <v-textarea clearable :rules="brandRules" no-resize v-model="description" heigth="5" persistent-hint
+                    class="shadow rounded bg-gray-100" hint="Decripcion del servicio"
+                    label="Descripción del servicio"></v-textarea>
             </v-col>
         </v-row>
-     <div class="buttons flex flex-row-reverse items-center mt-4">
-        <div class="w-full flex justify-end ">
-            <button @click="sendData" :disabled="!form" class="btn  : bg-indigo-900  capitalize font-normal mt-2">Agregar servicio</button>
-        </div>
-        <div class="w-full ">
-            <button @click="$emit('close')" class="btn   bg-indigo-900  capitalize font-normal mt-2">
-                cerrar
-            </button>
+        <div class="buttons flex flex-row-reverse items-center mt-4">
+            <div class="w-full flex justify-end ">
+                <button @click="sendData" :disabled="!form"
+                    class="btn  : bg-indigo-900  capitalize font-normal mt-2">Agregar servicio</button>
+            </div>
+            <div class="w-full ">
+                <button @click="$emit('close')" class="btn   bg-indigo-900  capitalize font-normal mt-2">
+                    cerrar
+                </button>
+            </div>
+
         </div>
 
-     </div>
-           
-        
-      
+
+
 
     </v-form>
 
@@ -128,24 +131,24 @@ export default {
         const clientsSuggestions = ref(null)
         const clientsSelect = ref(null)
 
-         const isTech = () => {
-            if(localStorage.getItem('roles') == 'ROLE_MODERATOR'){
+        const isTech = () => {
+            if (localStorage.getItem('roles') == 'ROLE_MODERATOR') {
 
                 console.log(localStorage.getItem('id'));
-                
-            techSelect.value = localStorage.getItem('id')
-            technician.value = localStorage.getItem('username')
-                
-            } 
-         }
 
-         isTech()
+                techSelect.value = localStorage.getItem('id')
+                technician.value = localStorage.getItem('username')
 
+            }
+        }
 
-        const setService = () => {
-            return {
-                description: description.value + '',
-                devices: [
+        isTech()
+
+        const sendData = async () => {
+            try {
+                const resp = await apiResources.post('/services', {
+                    description: description.value + '',
+                    device:
                     {
                         brand: brand.value + '',
                         model: model.value + '',
@@ -153,22 +156,13 @@ export default {
                         processor: processor.value + '',
                         ram: ram.value + '',
                         storage: storage.value + '',
-                        observations: observations.valu + ''
-                    }
-                ],
-                price: "0",
-                client: {
-                    id: clientsSelect.value + ''
-                },
-                technicians: {
-                    id: techSelect.value + ''
-                }
-            }
-        }
-
-        const sendData = async () => {
-            try {
-                const resp = await apiResources.post('/services/add', setService(), {
+                        observations: observations.value + ''
+                    },
+                    idClient: clientsSelect.value +"",
+                    idTechnician: techSelect.value +"",
+                    price: "0",
+                    observation: 'jejejej'
+                }, {
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('token')
                     }
@@ -195,17 +189,12 @@ export default {
 
             }
 
-
-
-
-
-
         }
 
         const selectTech = (name, id) => {
             technician.value = name
             techSelect.value = id
-           
+
 
         }
         const selectClient = (name, id) => {
@@ -213,11 +202,6 @@ export default {
             clientsSelect.value = id
 
         }
-
-
-
-
-
 
 
         watchEffect(async () => {
@@ -240,7 +224,6 @@ export default {
             }
             return
         })
-
 
 
 
@@ -271,7 +254,7 @@ export default {
 
         return {
             brandRules,
-           numRules,
+            numRules,
             emailRules,
             form,
             dialog,

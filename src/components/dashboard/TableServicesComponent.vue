@@ -27,32 +27,14 @@ export default {
   },
   emits: ['reload', 'changepage'],
   setup(props, ctx) {
-    const statusFormat = (status) => {
-      if (status === 'RECIBIDO') {
-        return 'Recibido'
-      }
-      if (status === 'REVISION') {
-        return 'En revisión'
-      }
-      if (status === 'CANCELADO') {
-        return 'Cancelado'
-      }
-      if (status === 'PROCESO') {
-        return 'En proceso'
-      }
 
-    }
-
-    const styleBadge = (status) => {
-      if (status === 'RECIBIDO') {
-        return 'badge-success'
-      }
-      if (status === 'REVISION') {
-        return 'badge-warning'
-      }
-      if (status === 'CANCELADO') {
-        return 'badge-error'
-      }
+    const status = {
+        RECIBIDO: { description: 'Recibido', color: 'bg-blue-500 '},
+        REVISION: { description: 'Revisión', color: 'badge-success'},
+        AUTORIZACION: { description: 'Autorización', color: 'badge-success'},
+        PROCESO: { description: 'Proceso', color: 'bg-yellow-500 text-white'}, 
+        COMPLETADO: { description: 'Completado', color: 'badge-success'}, 
+        CANCELADO: { description: 'Cancelado', color: 'badge-error'}, 
     }
 
     const pop = () => {
@@ -60,14 +42,12 @@ export default {
     }
 
     return {
-      statusFormat,
-      styleBadge,
-      pop
+      pop,
+      status
 
     }
 
   },
-
 
 };
 </script>
@@ -81,7 +61,7 @@ export default {
       </div>
 
       <div class=" w-5/6 md:w-1/4  flex items-center ">
-        <div class="dropdown ml-auto">
+        <div class="dropdown border ml-auto">
        
           <ul tabindex="0" class="dropdown-content  menu p-2 shadow bg-white rounded-box w-52">
             <p class="hover:bg-gray-100 px-3 py-1 rounded">Recibido</p>
@@ -97,7 +77,7 @@ export default {
     <div class=" main-cont w-full flex justify-center   md:bg-white  p-5 rounded-lg">
 
       <div class=" hidden sm:block overflow-x-auto w-full cont-table">
-        <div class="w-full justify-center text-lg font-bold flex  " v-if="items.length < 1 "> <p>No hay más datos</p></div>
+        <div class="w-full justify-center text-lg font-bold flex  " v-if="items.length < 1 "> <p>No Data</p></div>
         <table v-else class="table table-zebra w-full">
           <!-- head -->
           <thead>
@@ -116,29 +96,24 @@ export default {
             
             <!-- row 1 -->
             <tr>
-              <td class="border-b text-sm capitalize">{{ item.folio ? item.folio : 'CA00000000' }}</td>
+              <td class="border-b text-sm capitalize">{{ item.invoice ? item.invoice : 'CA00000000' }}</td>
               <td class="border-b text-sm capitalize">
                 <div class="tooltip" :data-tip="item.client.name + ' ' + item.client.lastName">
-                  <!-- <div class="info">{{ item.client.name + ' ' + item.client.lastName}} </div> -->
                   <router-link :to="{ name: 'clients-details', params: { id: item.client.id } }"> {{ item.client.name + ' ' + 
                   item.client.lastName }}</router-link>
                 </div>
               </td>
-              <td class="border-b text-sm capitalize">{{ item.devices[0] ? item.devices[0].brand + ' ' +
-                item.devices[0].model : '' }}</td>
+              <td class="border-b text-sm capitalize">{{ item.device.brand }} {{ item.device.model }}</td>
               <td class="border-b  text-sm capitalize ">
-                <!-- <div class="info"> {{ item.technicians.name }} maria GArcia Ramirez GArcia Ramirez</div> -->
-                <div class="tooltip" :data-tip="item.technicians.name">
-                  <!-- <div class="info">{{ item.technicians.name + ' ' + item.technicians.lastName   }} </div> -->
-                  <router-link :to="{ name: 'techs-details', params: { id: item.technicians.id } }"> {{
-                    item.technicians.name
-                    + ' ' + item.technicians.lastName }}</router-link>
+                <div class="tooltip" :data-tip="item.technician.name">
+                  <router-link :to="{ name: 'techs-details', params: { id: item.technician.id } }"> {{
+                    item.technician.name + ' ' + item.technician.lastName }}</router-link>
                 </div>
               </td>
               <td class="border-b text-sm capitalize ">
-                <div :class="styleBadge(item.status ? item.status : 'badge-ghost')"
+                <div :class="status[item.status].color"
                   class="badge py-3  text-white border-none">
-                  {{ item.status ? statusFormat(item.status) : 'No hay información' }}
+                  {{ status[item.status].description }}
                 </div>
               </td>
               <td class="border-b">
@@ -156,19 +131,19 @@ export default {
       </div>
 
       <div class=" -mt-8 cards-mobile flex flex-col wi sm:hidden">
-        <div class="w-full justify-center text-lg font-bold flex mt-8  " v-if="items.length < 1 "> <p>No hay más datos</p></div>
+        <div class="w-full justify-center text-lg font-bold flex mt-8  " v-if="items.length < 1 "> <p>No data</p></div>
 
         <div v-for="(item, index) in items" :key="index">
           <div class="cards  px-4 py-2 w-full mt-6 flex flex-col bg-white rounded-lg shadow-lg">
             <div class="flex  w-full justify-between flex-row">
               <div >
                 <p class="text-gray-500 text-sm">Folio</p>
-                <p class="font-bold">{{ item.folio ? item.folio : 'CA00000000' }}</p>
+                <p class="font-bold">{{ item.invoice || 'CA000000' }}</p>
               </div>
               <div class="date">
                 <p class="text-gray-500 text-sm text-center">Fecha</p>
                 
-                <p class="font-bold">{{ item.dateReceived ? item.dateReceived : 'No hay data' }}</p>
+                <p class="font-bold">{{ item.dateReceived || 'No hay data' }}</p>
               </div>
 
             </div>
@@ -181,16 +156,15 @@ export default {
               </div>
               <div class="date">
                 <p class="text-gray-500 text-sm">Dispositivo</p>
-                <p class="info">{{ item.devices[0] ? item.devices[0].brand + ' ' +
-                item.devices[0].model : '' }}</p>
+                <p class="info">{{ item.device.brand }} {{ item.device.model }}</p>
               </div>
             </div>
       
             <div class="flex  mt-4 mb-2 w-full justify-between items-center gap-8  flex-row">
               <div >
-                <div :class="styleBadge(item.status ? item.status : 'badge-ghost')"
+                <div :class="status[item.status].color"
                   class="badge py-3  text-white border-none">
-                  {{ item.status ? statusFormat(item.status) : 'No hay información' }}
+                  {{ status[item.status].description }}
                 </div>
               </div>
               <div class="date">
@@ -203,14 +177,7 @@ export default {
 
             </div>
 
-
-
-
-
-
-
           </div>
-
         </div>
 
       </div>
@@ -222,7 +189,7 @@ export default {
 
     <div class="pag flex text-black justify-center bg-white maxwi mt-4 rounded-lg p-2 w-full ">
       <div class="btn-group">
-        <button v-for="(item) in totalPages" class="mx-1 btn btn-outline border"  @click="$emit('changepage', item  )">{{  item }} </button>
+        <button v-for="(item) in totalPages" class="mx-1 btn btn-outline border"  @click="$emit('changepage', item  )">{{  item }}  </button>
       </div>
     </div>
 

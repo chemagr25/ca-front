@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiAuth = axios.create( {
-    baseURL: 'https://compuactual.azurewebsites.net/auth'
+    baseURL: 'https://guero-pendejo.azurewebsites.net/auth'
 })
 
 

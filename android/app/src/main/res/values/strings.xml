@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">compuapp</string>
-    <string name="title_activity_main">compuapp</string>
-    <string name="package_name">com.compuapp.com</string>
-    <string name="custom_url_scheme">com.compuapp.com</string>
+    <string name="app_name">capp</string>
+    <string name="title_activity_main">capp</string>
+    <string name="package_name">com.compuapp.mx</string>
+    <string name="custom_url_scheme">com.compuapp.mx</string>
 </resources>

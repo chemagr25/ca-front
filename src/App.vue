@@ -2,11 +2,11 @@
 <template class="h-full">
 
   <router-view></router-view>
-  <p class="text-black">{{ token }}</p>
+  <!-- <p class="text-black">{{ token }}</p> -->
 </template>
 
 
-<script >
+<!-- <script >
 import { PushNotifications } from '@capacitor/push-notifications';
 import {onMounted, ref} from 'vue'
 
@@ -22,9 +22,7 @@ export default {
       console.log()
     })
 
-    PushNotifications.register().catch((e) => {
-      console.log()
-    })
+    PushNotifications.register().catch((e) => { console.log })
 
 
     })
@@ -35,7 +33,7 @@ export default {
   }
 }
 
-</script>
+</script> -->
 
 <style  scoped>
 

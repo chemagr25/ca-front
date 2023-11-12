@@ -95,13 +95,9 @@ export default {
             </div>
             <p class="ml-3 mt-3">Servicios</p>
             <div class=" justify-center flex flex-wrap">
-
               <router-link v-for="service in tech.services" class=" m-3 bg-white  p-4 rounded-lg shadow-sm"
                 :to="{ name: 'services-details', params: { id: service.id } }">
-
-                {{ service.folio ? service.folio : 'NO hay folio' }}
-                <!-- {{ service.description ? service.description : 'NO hay folio' }} -->
-
+                {{ service.invoice || 'NO hay folio' }}
               </router-link>
             </div>
           </div>
@@ -120,7 +116,6 @@ export default {
   max-width: 16ch;
 }
 
-.product-img {}
 
 /* PRODUCT */
 .product {

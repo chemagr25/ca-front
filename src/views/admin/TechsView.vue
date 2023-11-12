@@ -31,7 +31,7 @@ export default {
     const setTechs = async () => {
 
       try {
-        const techs = await apiResources.get(`/technicians/all?pageNumber=${page.value}`,{
+        const techs = await apiResources.get(`/technicians?pageSize=10&pageNumber=${page.value}&sortBy=name`,{
             
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -46,30 +46,21 @@ export default {
         localStorage.clear()
         window.location.reload()
       }
-     
-
     };
-
-
     setTechs()
-
-    
-
-
-    return { allTechs,setTechs, totalPages, getPage };
+    return { 
+      allTechs,
+      setTechs,
+      totalPages,
+      getPage };
   },
 };
 </script>
-
-
 
 <template >
   <div class="main w-full flex flex-col  items-center ">
 
     <Loader v-if="!allTechs" />
     <TableTechs @reload="setTechs" v-else  @changepage="getPage"  :totalPages="totalPages" :items="allTechs" />
-
-
-
   </div>
 </template>
