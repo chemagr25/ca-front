@@ -59,18 +59,6 @@ export default {
       <div class="add-service w-1/6 md:w-1/2 gap-1  ">
         <Dialog @reload-table="pop" />
       </div>
-
-      <div class=" w-5/6 md:w-1/4  flex items-center ">
-        <div class="dropdown border ml-auto">
-       
-          <ul tabindex="0" class="dropdown-content  menu p-2 shadow bg-white rounded-box w-52">
-            <p class="hover:bg-gray-100 px-3 py-1 rounded">Recibido</p>
-            <p class="hover:bg-gray-100 px-3 py-1 rounded">En proceso</p>
-            <p class="hover:bg-gray-100 px-3 py-1 rounded">Cancelado</p>
-          </ul>
-        </div>
-      </div>
-
     </div>
   </div>
   <div class="root  flex justify-center items-center flex-col w-full ">
@@ -79,7 +67,6 @@ export default {
       <div class=" hidden sm:block overflow-x-auto w-full cont-table">
         <div class="w-full justify-center text-lg font-bold flex  " v-if="items.length < 1 "> <p>No Data</p></div>
         <table v-else class="table table-zebra w-full">
-          <!-- head -->
           <thead>
             <tr>
               <td>Folio</td>
@@ -90,11 +77,7 @@ export default {
               <th class="pl-8">Acciones</th>
             </tr>
           </thead>
-
-      
           <tbody v-for=" (item, index) in items" :key="index">
-            
-            <!-- row 1 -->
             <tr>
               <td class="border-b text-sm capitalize">{{ item.invoice ? item.invoice : 'CA00000000' }}</td>
               <td class="border-b text-sm capitalize">
@@ -125,11 +108,7 @@ export default {
             </tr>
           </tbody>
         </table>
-
-
-
       </div>
-
       <div class=" -mt-8 cards-mobile flex flex-col wi sm:hidden">
         <div class="w-full justify-center text-lg font-bold flex mt-8  " v-if="items.length < 1 "> <p>No data</p></div>
 
@@ -170,8 +149,9 @@ export default {
               <div class="date">
 
                 <div class=" badge badge-ghost py-3">
-                  <EyeIcon class="h-5 mr-2 w-5 text-indigo-900" /> <router-link
-                    :to="{ name: 'services-details', params: { id: item.id } }">Ver Detalles</router-link>
+                  <router-link
+                  
+                    :to="{ name: 'services-details', params: { id: item.id } }"> <EyeIcon class="h-5  w-5  text-indigo-900" /> <p class="hidden md:block">Ver detalles</p> </router-link>
                 </div>
               </div>
 
@@ -187,7 +167,7 @@ export default {
     </div>
 
 
-    <div class="pag flex text-black justify-center bg-white maxwi mt-4 rounded-lg p-2 w-full ">
+    <div class="pag flex text-black justify-center  mb-2  rounded-lg p-2 w-full ">
       <div class="btn-group">
         <button v-for="(item) in totalPages" class="mx-1 btn btn-outline border"  @click="$emit('changepage', item  )">{{  item }}  </button>
       </div>

@@ -1,6 +1,6 @@
 
 <template class=" ">
-<div class="main-cont flex  justify-center px-10 md:px-0 ">
+<div class="main-cont flex  justify-center px-2 md:px-0 ">
   <LoginComponent />
 
 </div>

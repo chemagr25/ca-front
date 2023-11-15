@@ -1,5 +1,7 @@
 <template>
-  <div class=" absolute mt-28 spinner"></div>
+  <div class=" absolute flex justify-center items-center loader w-full">
+    <div class="absolute mt-28 spinner"></div>
+  </div>
 </template>
 
 
@@ -7,6 +9,7 @@
 
 >
 .spinner {
+  
   width: 56px;
   height: 56px;
   display: grid;

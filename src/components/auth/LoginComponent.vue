@@ -2,7 +2,7 @@
 <template>
 
   <div
-  class="flex min-h-full  bg-white    px-8 rounded-3xl  w-full sm:2/6 md:w-3/6 mt-28 login-form  shadow-lg   items-center   py-12 "
+  class="flex min-h-full  w-full    px-8 rounded-3xl   sm:2/5 md:w-3/6 mt-28 login-form   items-center   py-12 "
   >
     <div class="w-full  space-y-8">
       <div>
@@ -65,10 +65,6 @@
             class="group h-12 items-center relative flex w-full justify-center align-center rounded-md bg-indigo-900 py-2 px-3 text-sm font-semibold text-white hover:bg-indigo-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-900"
           >
             <p>Iniciar sesión</p>
-
-
-            <!-- <div class="loader" id="loader"> -->
-            <!-- </div> -->
           </button>
         </div>
       </div>
@@ -79,13 +75,7 @@
 <script setup>
 import { ref } from "vue";
 import apiAuth from "../../api/apiAuth";
-import {
-  setCookie,
-  getCookie,
-  delete_cookie,
-} from "../../helpers/cookiesHelper";
-import { LockClosedIcon } from "@heroicons/vue/20/solid";
-import axios from "axios";
+
 import { createToast } from "mosha-vue-toastify";
 import router from "../../router/router";
 // import router from 'vue-router'
@@ -103,6 +93,16 @@ const nextPage = () => {
 };
 
 const sendLogin = async () => {
+  if(!password.value || !user.value) {
+    return createToast(
+      {
+        title: "Error",
+        description: "Llena todos los campos",
+      },
+      { type: "danger", timeout: 1500, hideProgressBar: true }
+    );
+  }
+
   try {
     const res = await apiAuth.post("/login", {
       username: user.value,
