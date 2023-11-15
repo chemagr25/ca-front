@@ -24,7 +24,7 @@ export default {
 <template >
   <div class="w-full flex-col flex justify-center items-center h-full">
 
-    <div  class="cont-main w-full rounded-lg">
+    <div  class="cont-main  pb-10 px-4 w-full rounded-lg">
       <ServiceDetailsComponent :idService="service"/>
    
     </div>

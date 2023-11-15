@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import ItemNavBar from "./ItemNavBarComponent.vue";
+import { useRoute } from "vue-router";
 
 import {
   Bars3Icon,
@@ -26,6 +27,12 @@ const clearSession = () => {
   router.push({ name: "login" });
 };
 
+
+
+
+
+
+
 const name = ref(localStorage.getItem('username'));
 
 const getRole = () => {
@@ -34,7 +41,7 @@ const getRole = () => {
 }
 
 
-const getBack = () => {
+const back = () => {
   router.go(-1)
 }
 
@@ -78,14 +85,14 @@ const mobileMenuOpen = ref(false);
   <div class="w-full bordera absolute fix">
     <v-toolbar
     color="white">
-      <v-btn @click="getBack" icon>
+      <v-btn @click="back" icon>
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-btn icon>
-        <v-icon>mdi-export</v-icon>
+        <v-icon @click="clearSession">mdi-export</v-icon>
       </v-btn>
 
     </v-toolbar>
