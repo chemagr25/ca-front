@@ -54,15 +54,16 @@ export default {
 
 
 <template>
-  <div class="filters-search-add w-full maxwi mb-3 p-2 rounded-lg">
+  <div class="filters-search-add w-full maxwi mb-3  rounded-lg">
     <div class="main px-3 w-full flex items-center justify-between">
-      <div class="add-service w-1/6 md:w-1/2 gap-1  ">
+      <div class="add-service w-1/6 md:w-1/2  ml-2 ">
         <Dialog @reload-table="pop" />
       </div>
     </div>
   </div>
-  <div class="root  flex justify-center items-center flex-col w-full ">
-    <div class=" main-cont w-full flex justify-center   md:bg-white  p-5 rounded-lg">
+  <div class="root lg:px-4 flex justify-center items-center flex-col w-full ">
+
+    <div class=" main-cont w-full flex justify-center   mt-4 md:bg-white rounded-xl  p-5 ">
 
       <div class=" hidden sm:block overflow-x-auto w-full cont-table">
         <div class="w-full justify-center text-lg font-bold flex  " v-if="items.length < 1 "> <p>No Data</p></div>
@@ -109,7 +110,7 @@ export default {
           </tbody>
         </table>
       </div>
-      <div class=" -mt-8 cards-mobile flex flex-col wi sm:hidden">
+      <div class=" -mt-8  cards-mobile flex flex-col w-full sm:hidden">
         <div class="w-full justify-center text-lg font-bold flex mt-8  " v-if="items.length < 1 "> <p>No data</p></div>
 
         <div v-for="(item, index) in items" :key="index">
