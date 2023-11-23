@@ -35,6 +35,7 @@ export default {
         PROCESO: { description: 'Proceso', color: 'bg-yellow-500 text-white'}, 
         COMPLETADO: { description: 'Completado', color: 'badge-success'}, 
         CANCELADO: { description: 'Cancelado', color: 'badge-error'}, 
+        ENTREGADO: { description: 'Entregado', color: 'badge-success'}, 
     }
 
     const pop = () => {
