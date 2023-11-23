@@ -73,7 +73,7 @@ export default {
               </div>
               <div class="info">
                 <p class="text-xl">Teléfono</p>
-                <p class="">
+                <p>
                   {{ tech.phone }}
                 </p>
               </div>

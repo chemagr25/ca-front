@@ -1,6 +1,6 @@
 
 <script setup>
-import NavBar from "../../components/NavBarComponent.vue";
+import NavBar from "../../components/mobile/NavBarComponent.vue";
 </script>
 
 
