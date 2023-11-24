@@ -79,7 +79,7 @@ onMounted(async () => {
   await PushNotifications.register().then((res) => {
     console.log(res)
   }).catch((e) => {
-    console.log(e)
+    console.log()
   })
 });
 
@@ -146,7 +146,7 @@ const sendLogin = async () => {
       return nextPage();
     }
   } catch (e) {
-    console.log(e);
+    console.log();
 
     return createToast(
       {

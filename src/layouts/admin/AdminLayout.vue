@@ -4,6 +4,8 @@ import NavBarMobile from "../../components/mobile/NavBarComponent.vue";
 import NavBarComponent from "../../components/NavBarComponent.vue";
 import router from "../../router/router";
 
+import { DocumentIcon,ShieldCheckIcon,UserGroupIcon } from "@heroicons/vue/24/outline";
+
 const goRoute = (name) => {
   router.push({ name: `${name}` });
 }
@@ -23,20 +25,18 @@ const goRoute = (name) => {
     <v-layout class="overflow-visible" style="height: 56px;">
       <v-bottom-navigation color="teal" grow>
         <v-btn @click="goRoute('services')">
-          <v-icon>mdi-file-document-multiple-outline</v-icon>
+          <DocumentIcon class="w-4"></DocumentIcon>
           Servicios
         </v-btn>
         <v-btn @click="goRoute('techs')">
-          <v-icon>mdi-security</v-icon>
+          <ShieldCheckIcon class="w-4"></ShieldCheckIcon>
           Técnicos
         </v-btn>
         <v-btn @click="goRoute('clients')">
-          <v-icon>mdi-account-group</v-icon>
+          <UserGroupIcon class="w-4"></UserGroupIcon>
           Clientes
         </v-btn>
-        <v-btn>
-          <v-icon>mdi-account</v-icon>
-        </v-btn>
+       
       </v-bottom-navigation>
     </v-layout>
   </div>
