@@ -177,8 +177,7 @@ export default {
   </div>
 
   <div v-else class="w-full flex flex-col items-center  rounded-lg">
-    {{ service }}
-
+ 
     <div class="w-full shadow-lg lg:w-1/2 p-4 bg-white rounded-lg  main-cont maxwi flex flex-col lg:flex-row">
 
       <div class=" basis-1/3  gap-1 flex flex-col ">
@@ -216,12 +215,8 @@ export default {
       <div class="flex flex-col gap-1  basis-1/3 ">
         <p class="self-center font-bold">Cliente</p>
         <p class="font-bold">Nombre</p>
-        <p>{{ service.client.name }}</p>
-        <p>{{ service.client.lastName }}</p>
-        <p class="font-bold">Teléfono</p>
-        <p>{{ service.client.phone }}</p>
-        <p class="font-bold">Correo</p>
-        <p>{{ service.client.email }}</p>
+        <p>{{ service.client.name }} {{ service.client.lastName }}</p>
+        <p></p>
       </div>
     </div>
 
