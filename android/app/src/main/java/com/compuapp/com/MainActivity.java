@@ -1,4 +1,4 @@
-package com.compuapp.mx;
+package com.compuapp.com;
 
 import com.getcapacitor.BridgeActivity;
 

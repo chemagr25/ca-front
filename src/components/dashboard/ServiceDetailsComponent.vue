@@ -111,7 +111,7 @@ export default {
     const sendNotification = async (service) => {
 
       try {
-        await apiResources.post('services/notify/36', {
+        await apiResources.post(`services/notify/${service.client.id}`, {
           title: `Nuevo comentario en su servicio ${service} `,
           body: 'Se ha agregado un nuevo comentario a su servicio'
         },
@@ -127,41 +127,40 @@ export default {
     }
     const sendNotification2 = async () => {
 
-try {
-  await apiResources.post('services/notify/36', {
-    title: `Tienes novedades en su servicios `,
-    body: 'Ha cambiado de status'
-  },
-    {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
+      try {
+        await apiResources.post(`services/notify/${service.value.client.id}`, {
+          title: `Tienes novedades en su servicios `,
+          body: 'Ha cambiado de status'
+        },
+          {
+            headers: {
+              Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+          })
+
+      } catch (error) {
+        console.log(error)
       }
-    })
-
-} catch (error) {
-  console.log(error)
-}
-}
-
+    }
 
     const changeStatus = async (newStatus) => {
 
       try {
         await apiResources.patch(`/services/${service.value.id}`, {
-        status: newStatus
-      }, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        }
-      })
+          status: newStatus
+        }, {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          }
+        })
 
-      await getService()
-      await sendNotification2()
-      }catch (e) {
+        await getService()
+        await sendNotification2()
+      } catch (e) {
         console.log(e)
       }
 
-  
+
 
     }
 
@@ -178,6 +177,7 @@ try {
   </div>
 
   <div v-else class="w-full flex flex-col items-center  rounded-lg">
+    {{ service }}
 
     <div class="w-full shadow-lg lg:w-1/2 p-4 bg-white rounded-lg  main-cont maxwi flex flex-col lg:flex-row">
 
@@ -193,8 +193,10 @@ try {
         <div class="dropdown dropdown-bottom">
           <label tabindex="0" class=" cursor-pointer">{{ service.status }}</label>
           <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-            <li v-for="item in status"><p @click="changeStatus(item.name)"> {{ item.name }}</p></li>
-            
+            <li v-for="item in status">
+              <p @click="changeStatus(item.name)"> {{ item.name }}</p>
+            </li>
+
           </ul>
         </div>
       </div>

@@ -36,7 +36,6 @@ export default {
       totalPages.value = clients.data.totalPages
         allClients.value = clients.data.content;
 
-
         console.log(allClients.value)
       }catch (e){
         console.log(e)

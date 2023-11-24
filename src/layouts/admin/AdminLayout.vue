@@ -15,6 +15,7 @@ const goRoute = (name) => {
   <NavBarMobile class="lg:hidden" />
   <NavBarComponent class="hidden lg:block"/>
   <div class="pt-24 lg:pt-8">
+  
     <router-view></router-view>
   </div>
 

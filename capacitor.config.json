@@ -1,10 +1,10 @@
 {
-  "appId": "com.compuapp.mx",
+  "appId": "com.compuapp.com",
   "appName": "capp",
   "webDir": "dist",
   "server": {
     "androidScheme": "https",
-    "url": "http://192.168.0.108:5173/",
+    "url": "http://192.168.0.108:5173",
     "cleartext": true
   }
 }

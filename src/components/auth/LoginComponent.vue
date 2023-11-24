@@ -9,7 +9,7 @@
         <h1
           class=" text-center text-3xl font-bold tracking-tight text-gray-900"
         >
-          CompuActual
+          CompuActuall
         </h1>
         <h2
           class="mt-6 text-center text-3xl font-600 tracking-tight text-gray-900"
@@ -111,7 +111,13 @@ const sendLogin = async () => {
     });
 
     console.log(res)
-    const { token, username, email, roles,id } = res.data;
+    const { token, username, email, roles,id  } = res.data;
+
+    if (roles[0] === "ROLE_USER") {
+      localStorage.setItem("idClient", res.data.clientId
+)
+     
+    }
 
     localStorage.setItem("id", id);
 
