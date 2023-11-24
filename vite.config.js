@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [vue(),
     VitePWA({
       workbox: {
-        globPatterns: ['**/*.{jpg,png,json,html,js,css,svg,woff2,woff,ttf}'],
+        globPatterns: ['**/*.{jpg,png,json,html,js,css,svg,woff2,woff,ttf, eot,ico}'],
         runtimeCaching:[{
           urlPattern: ({url}) =>{
             return url.pathname.startsWith('/api')
