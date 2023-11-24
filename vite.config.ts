@@ -12,7 +12,7 @@ export default defineConfig({
           urlPattern: ({url}) =>{
             return url.pathname.startsWith('/api')
           },
-          handler: 'CacheFirst',
+          handler: 'CacheFirst' as const,
           options:{
             cacheName: 'api-cache',
             cacheableResponse: {

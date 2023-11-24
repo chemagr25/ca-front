@@ -4,7 +4,7 @@
     <div class="w-full  space-y-8">
       <div>
         <h1 class=" text-center text-3xl font-bold tracking-tight text-gray-900">
-          CompuActual {{ tokenDevice }}
+          CompuActual
         </h1>
         <h2 class="mt-6 text-center text-3xl font-600 tracking-tight text-gray-900">
           Inicia sesión
